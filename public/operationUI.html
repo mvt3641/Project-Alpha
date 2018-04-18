@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Operations</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--link href="assets/css/bootstrap.min.css" rel="stylesheet"-->
+    <link href="assets/css/operation.css" rel="stylesheet">
+    <link href="assets/css/table.css" rel="stylesheet">
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="assets/javascript/operation.js"></script>
+    <script src="assets/firebase/heliumDB.js"></script>
+
+  </head>
+
+  <body>
+    <div class="navbar-nav navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><!--img src="images/logo30.png" alt=""-->ASADI</a>
+        </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="operationUI.html"><i class="icon-home icon-white"></i> Operations </a></li>
+              <li><a href="HubIndex.html"><i class="icon-th icon-white"></i> HUB</a></li>
+              <li><a href="clientUI.html"><i class="icon-lock icon-white"></i> Client </a></li>
+
+            </ul>
+          </div>
+        </div>
+    </div><!--divend-->
+    <br><br><br>
+     <div class="container">
+       <div class="row">
+         <!-- DONUT CHART BLOCK -->
+           <div class="col-sm-4 col-lg-4">
+
+             <div class="dash-unit">
+                     <dtitle>Current Weather:</dtitle>
+                     <hr>
+                     <div class="weatherAPIBlock" style="background-color:  transparent">
+                         <ul class="list-group list-group-flush" style="background-color: transparent; list-style-type:none;">
+                             <li style="background-color:  transparent">City: <span id="city"></span></li>
+                             <li>Main Weather: <span id="main_weather"></span></li>
+                             <li>Description: <span id="description_weather"></span></li>
+                             <!--img id="weather_image" src=""-->
+                             <li>Temperature: <span id="temperature"></span></li>
+                             <li>Pressure: <span id="pressure"></span></li>
+                             <li>Humidity: <span id="humidity"></span></li>
+                             <li>Wind: <span id="wind"></span></li>
+                             <li>Description: <span id="description_weather"></span></li>
+                         </ul>
+
+                         <input class="weather-input" type="text" placeholder="Current Weather">
+                         <button type="button" class="query_btn btn btn-default btn-sm" style="margin-top:-18px">Search</button>
+                     </div>
+                 </div>
+
+           </div>
+
+         <!-- DONUT CHART BLOCK -->
+           <div class="col-sm-4 col-lg-4">
+            <div class="dash-unit">
+              <dtitle>Weather Forecast</dtitle>
+              <hr style="margin-bottom: 2px">
+              <a class="weatherwidget-io" href="https://forecast7.com/en/33d75n84d39/atlanta/?unit=us" data-days="3" data-theme="original" data-baseColor="#3d3d3d" data-highColor="#d23e3e" data-lowColor="#b1c738">Atlanta, GA, United States</a>
+                    <script>
+                    ! function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://weatherwidget.io/js/widget.min.js";
+                            fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "weatherwidget-io-js");
+                    </script>
+            </div>
+           </div>
+
+           <div class="col-sm-3 col-lg-3">
+             <!-- LOCAL TIME BLOCK -->
+                <div class="half-unit">
+                  <dtitle>Local Time</dtitle>
+                  <hr>
+                    <!--div class="clockcenter">
+                      <digiclock>12:45:25</digiclock>
+                    </div-->
+                    <div style="margin-left: 17px">
+                        <iframe src="https://free.timeanddate.com/clock/i63392cd/n25/fn6/fs18/fcb1c738/tct/pct/ftb/pd3/tt0/tw1/th1/ta1/tb4" frameborder="0" width="224" height="46" allowTransparency="true"></iframe>
+                    </div>
+                </div>
+
+                <!-- SERVER UPTIME -->
+                <div class="half-unit">
+                    <dtitle>Server Uptime</dtitle>
+                    <hr>
+                    <div class="cont">
+                    <p><img src="assets/images/up.png" alt=""> <bold>Up</bold> | 356ms.</p>
+                  </div>
+                </div>
+           </div>
+       </div><!--row1 end-->
+       <div class="row">
+          <div class="col-sm-11 col-lg-11">
+               <div class="dash-unit-entry">
+                   <ul class="nav nav-tabs">
+                      <li class="active">
+                        <a href="#metricsTab" data-toggle="tab">System Flight Metrics</a>
+                      </li>
+                      <li>
+                        <a href="#flightTab" data-toggle="tab">Flight Data Log</a>
+                      </li>
+                      <li>
+                        <a href="#heliumTab" data-toggle="tab">Helium Status Log</a>
+                      </li>
+                  </ul>
+
+                  <div class="tab-content">
+                    <div id="metricsTab" class="tab-pane active">
+                      <canvas id="line-chart" width="150" height="60"></canvas>
+                    </div>
+
+                     <div id="flightTab" class="tab-pane">
+
+                       <!--flight Data entry-->
+                        <br>
+                         <form id="flightFormId" style="display:none;">
+                               <div class="form-row">
+                                 <div class="form-group col-md-3">
+                                   <!--label for="inputHContainer1">Helium Container 1</label-->
+                                   <input type="text" class="form-control" placeholder="Date Format: MM/DD/YY" id="Logged-By-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Logged-By-Input" id="Logged-By-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Time-Logged-input" id="Time-Logged-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="System" id="#System-Input">
+                                 </div>
+                               </div>
+                               <div class="form-row">
+                                 <!--div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="System-Status-Input" id="System-Status-Input">
+                                 </div-->
+                                 <div class="form-group col-md-3">
+                                    <select class="form-control" id="System-Status-Input">
+                                      <option>FMC</option>
+                                      <option>NMC</option>
+                                      <option>PMC</option>
+                                    </select>
+                                  </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Flight Altitude" id="Flight-Altitude-Input">
+                                 </div>
+                                 <!--div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Reason-Moored" id="Reason-Moored-Input">
+                                 </div-->
+                                 <div class="form-group col-md-3">
+                                    <select class="form-control" id="Reason-Moored-Input">
+                                      <option>WX</option>
+                                      <option>SM</option>
+                                      <option>UM</option>
+                                      <option>BD</option>
+                                    </select>
+                                  </div>
+                               </div>
+                               <div class="form-row">
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Launches" id="Launches-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Recoveries" id="Recoveries-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Tether Tension" id="Tether-Tension-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Ground Winds" id="Ground-Winds-Input">
+                                 </div>
+                               </div>
+                               <div class="form-row">
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Winds Aloft" id="Winds-Aloft-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Ground Temp" id="Ground-Temp-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Barometric Pressure" id="Barometric-Pressure-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Pitch" id="Pitch-Input">
+                                 </div>
+                               </div>
+                               <div class="form-row">
+                                 <div class="form-group col-md-3">
+                                   <input type="text" class="form-control" placeholder="Helium Pressure" id="Helium-Pressure-Input">
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Ballonet Pressure" id="Ballonet-Pressure-Input">
+                                 </div>
+                                 <div class="form-group col-md-6">
+                                   <textarea class="form-control" id="Notes" placeholder="Notes" rows="3"></textarea>
+                                 </div>
+                               </div>
+                                <div class="form-group col-md-6">
+                                 <button type="button" class="btn btn-primary" style= "margin-left: 10px;" onclick="saveFlightData(),SwapDivsWithClick('flightFormId','flightTableID')">Save</button>
+                                 <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Close</button>
+                               </div>
+                           </form>
+                           <br>
+                         </form><!--flight Data entry end -->
+
+                       <div id="flightTableID" class="col-sm-12 col-lg-12" style="display:block; overflow: auto;" >
+                         <table class="display" id="flight-status-table">
+                            <thead>
+                                <tr>
+                                  <th>Date MM/DD/YY</th>
+                                  <th>Logged By</th>
+                                  <th>Time Logged</th>
+                                  <th>System</th>
+                                  <th>System Status</th>
+                                  <th>Flight Altitude</th>
+                                  <th>Reason Moored</th>
+                                  <th>Launches</th>
+                                  <th>Recoveries </th>
+                                  <th>Tether Tension</th>
+                                  <th>Ground Winds</th>
+                                  <th>Winds Aloft</th>
+                                  <th>Ground Temperature</th>
+                                  <th>Barometric Pressure</th>
+                                  <th>Pitch</th>
+                                  <th>Helium Pressure</th>
+                                  <th>Ballonet Pressure</th>
+                                  <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                         </table>
+                          <br>
+                          <button type="button" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
+                       </div><!--flightTableID-->
+
+                     </div><!--fligtTab-end-->
+
+                      <div id="heliumTab" class="tab-pane">
+                        <!-- Entry Form -->
+                         <br>
+                         <form id="formId" style="display:none;">
+                             <div class="form-row">
+                               <div class="form-group col-md-4">
+                                 <!--label for="inputHContainer1">Helium Container 1</label-->
+                                 <input type="text" class="form-control" id="inputHContainer1" placeholder="Helium Container 1">
+                               </div>
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputHContainer2" placeholder="Helium Container 2">
+                               </div>
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputHContainer3" placeholder="Helium Container 3">
+                               </div>
+                             </div>
+                             <div class="form-row">
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputHContainer4" placeholder="Helium Container 4">
+                               </div>
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputHExpended"  placeholder="Helium Expended">
+                               </div>
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputLoggedBy"  placeholder="Name">
+                               </div>
+                             </div>
+                             <div class="form-row">
+                               <div class="form-group col-md-4">
+                                 <input type="text" class="form-control" id="inputTimeLogged"  placeholder="ex. 0100, 0200">
+                               </div>
+                               <div class="form-group col-md-8">
+                                 <textarea class="form-control" id="txtAreaNotes" placeholder="Notes" rows="3"></textarea>
+                               </div>
+                             </div>
+                             <div >
+                               <button type="button" class="btn btn-primary" style= "margin-left: 10px;" onclick="saveHeliumData(),SwapDivsWithClick('formId','heliumTableID')">Save</button>
+                               <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Close</button>
+                             </div>
+                         </form>
+                         <br>
+
+                         <div id="heliumTableID" class="col-sm-12 col-lg-12" style="display:block;" >
+                             <table class="display" id='helium-status-table'>
+                               <thead>
+                                 <tr>
+                                   <th>Time Entered</th>
+                                   <th>Helium Container 1</th>
+                                   <th>Helium Container 2</th>
+                                   <th>Helium Container 3</th>
+                                   <th>Helium Container 4</th>
+                                   <th>Helium Expended</th>
+                                 </tr>
+                               </thead>
+                               <tbody>
+                               </tbody>
+                             </table>
+                             <br>
+                             <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Add</button>
+                        </div><!--heliumTab-end-->
+
+
+                      </div> <!--heliumTableID-end-->
+
+                  </div><!--tab-content-end-->
+
+               </div><!--dash-unit-entry-end-->
+
+          </div><!--col-sm-11 col-lg-11-end-->
+
+
+       </div><!--end of row2-->
+
+
+     </container><!--2nd container end-->
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+     <script src="assets/firebase/heliumDB.js"></script>
+
+     <script type="text/javascript">
+     $(document).ready(function() {
+       var appID = "eb7acd14dcfc608e19796902cddb4326";
+
+       $(".query_btn").click(function() {
+
+         var query_param = $(this).prev().val();
+
+
+         if ($(this).prev().attr("placeholder") == "Current Weather") {
+           var weather = "https://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&APPID=" + appID;
+
+           $.getJSON(weather, function(json) {
+
+
+             $("#city").html(json.name);
+             $("#main_weather").html(json.weather[0].main);
+             $("#description_weather").html(json.weather[0].description);
+             $("#weather_image").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+             //Temp coversion//
+             function tempconvert() {
+               var tempmath = (((json.main.temp - 273.15) * 1.8) + 32);
+               return tempmath.toFixed(2);
+             };
+
+             $("#temperature").html(tempconvert() + "F");
+             $("#pressure").html(json.main.pressure + "mb/hPa");
+             $("#humidity").html(json.main.humidity + "%");
+             //Wind knots Convert//
+             function windconvert() {
+               var windmath = ((json.wind.speed) * 1.9438445);
+               return windmath.toFixed(2);
+             };
+             $("#wind").html(windconvert() + "Knts Deg: " + (json.wind.deg));
+
+             console.log(json);
+           });
+
+         }
+
+       })
+
+
+     });
+   </script>
+
+  </body>
+
+</head>

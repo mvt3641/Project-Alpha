@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ASADI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+
+
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/font-style.css" rel="stylesheet">
+  <!-- <link href="css/flexslider.css" rel="stylesheet"> -->
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- <script type="text/javascript" src="js/lineandbars.js"></script> -->
+
+  <!-- <script type="text/javascript" src="js/dash-charts.js"></script> -->
+  <!-- <script type="text/javascript" src="js/gauge.js"></script> -->
+
+  <!-- NOTY JAVASCRIPT -->
+  <script type="text/javascript" src="js/noty/jquery.noty.js"></script>
+  <script type="text/javascript" src="js/noty/layouts/top.js"></script>
+  <script type="text/javascript" src="js/noty/layouts/topLeft.js"></script>
+  <script type="text/javascript" src="js/noty/layouts/topRight.js"></script>
+  <script type="text/javascript" src="js/noty/layouts/topCenter.js"></script>
+
+  <!-- You can add more layouts if you want -->
+  <script type="text/javascript" src="js/noty/themes/default.js"></script>
+  <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+  <!-- <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script> -->
+  <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="js/admin.js"></script>
+  <script src="assets/firebase/heliumDB.js"></script>
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+    }
+  </style>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+  <!-- Google Fonts call. Font Used Open Sans & Raleway -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="assets/css/clientStyle.css">
+
+
+  <!-- <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btn-blog-next").click(function () {
+            $('#blogCarousel').carousel('next')
+        });
+        $("#btn-blog-prev").click(function () {
+            $('#blogCarousel').carousel('prev')
+        });
+
+        $("#btn-client-next").click(function () {
+            $('#clientCarousel').carousel('next')
+        });
+        $("#btn-client-prev").click(function () {
+            $('#clientCarousel').carousel('prev')
+        });
+
+    });
+
+    $(window).load(function () {
+
+        $('.flexslider').flexslider({
+            animation: "slide",
+            slideshow: true,
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+
+</script> -->
+</head>
+
+<body>
+
+  <!-- NAVIGATION MENU -->
+
+  <div class="navbar-nav navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="index.html">ASADI</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="operationsUI.html"><i class="icon-home icon-white"></i> Operations</a></li>
+          <li><a href="HubIndex.html"><i class="icon-th icon-white"></i> Hub</a></li>
+          <li><a href="clientUI.html"><i class="icon-lock icon-white"></i> Client</a></li>
+
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- FIRST ROW OF BLOCKS -->
+    <div class="row">
+
+
+
+      <!-- Site Flight Status -->
+      <div class="col-sm-6 col-lg-6">
+        <div class="dash-unit" style="height:225px;">
+          <dtitle>Site Flight Status</dtitle>
+          <hr>
+          <!--Site Flight Status Toggle-->
+          <div class="alertToggle col-md-8" id="#atlanta-Site">
+            <ul class="list-group">
+              <li class="list-group-item active" style=" background-color:dimgrey; padding-left: 30px"> Site: Atlanta
+                <button type="button" class="btn btn-success aloftButton" style="margin-left: 9px">Aloft</button>
+                <button type="button" class="btn btn-danger mooredButton" style="margin-left: 5px"> Moored</button></li>
+
+              <li class="list-group-item"style="background-color:dimgrey;">Status: <span id="displayStatus"> Display</span></li>
+
+              <li class="list-group-item" style="background-color:dimgrey;">Status: <span id="displayStatus"> Display</span></li>
+
+              <li class="list-group-item" style="background-color:dimgrey;">Reason: <span id="displayReason"> Display</span></li>
+
+            </ul>
+
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-6 col-lg-6">
+
+        <!-- Weather Seach Block -->
+        <div class="dash-unit" id="CurrentWin" style="height:425px;">
+          <dtitle>Current Weather</dtitle>
+          <hr>
+          <div class="weather-align">
+            <p>City: <span id="city"></span></p>
+            <p>Main Weather: <span id="main_weather"></span></p>
+            <p>Description: <span id="description_weather"></span></p>
+            <img id="weather_image" src="">
+            <p>Temperature: <span id="temperature"></span></p>
+            <p>Pressure: <span id="pressure"></span></p>
+            <p>Humidity: <span id="humidity"></span></p>
+            <p>Wind: <span id="wind"></span></p>
+            <input type="text" placeholder="Current Weather" style="width:230px; color:black;"><button type="button" class="query_btn btn btn-default btn-sm">Search</button><br>
+
+
+
+          </div>
+
+
+        </div>
+        <!-- /row -->
+
+
+
+      </div>
+      <!-- /span3 -->
+
+
+
+
+      <!-- Site Data Log Seacrh -->
+      <div class="col-sm-12 col-lg-12">
+        <div class="dash-unit" id="tableover">
+          <dtitle>Site Data Log Search</dtitle>
+          <hr>
+
+          <!--Seach Inputs-->
+
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-2">
+                <input type="text" style="color:black;" placeholder="Site Name" value="Atlanta">
+              </div>
+              <div class="col-sm-2">
+                <input type="text" placeholder="Start Date" style="color:black;" id="Start-Date">
+              </div>
+              <div class="col-sm-2">
+                <input type="text" style="color:black;" placeholder="End Date" id="End-Date">
+              </div>
+              <div class="col-sm-2">
+                <button type="submit" style="color:black;" class="query_btn btn btn-default btn-md" id="search">Submit</button>
+              </div>
+            </div>
+          </div>
+          <!--      Search Table -->
+          <!-- <div class="row"> -->
+          <!-- <div class="col-md-8" style="font-size: 10px"> -->
+          <!-- <div class="panel panel-primary"> -->
+          <!-- <div class="panel-heading"> -->
+          <!-- <h3 class="panel-title"><strong>Search Report </strong></h3> -->
+          <!-- </div> -->
+          <!-- <div class="panel-body"> -->
+
+          <table class="table table-hover" id='search-report-table'>
+            <thead>
+              <tr>
+                <th>Date MM/DD/YY</th>
+                <th>Logged By</th>
+                <th>Time Logged</th>
+                <th>System Status</th>
+                <th>Flight Altitude</th>
+                <th>Reason Moored</th>
+                <th>Launches</th>
+                <th>Recoveries </th>
+                <th>Tether Tension</th>
+                <th>Ground Winds</th>
+                <th>Winds Aloft</th>
+                <th>Ground Temperature</th>
+                <th>Barometric Pressure</th>
+                <th>Pitch</th>
+                <th>Helium Pressure</th>
+                <th>Ballonet Pressure</th>
+                <th>Notes</th>
+
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <!-- </div> -->
+          <!-- </div> -->
+          <!-- </div> -->
+          <!-- </div> -->
+
+
+
+          <!--  Seach Inputs-->
+
+        </div>
+      </div>
+
+
+    </div> -->
+  </div>
+  <!-- /row -->
+
+
+  <!-- THIRD ROW OF BLOCKS -->
+  <div class="row">
+    <div class="col-sm-6 col-lg-6" align="right">
+
+      <!-- BARS CHART - lineandbars.js file -->
+      <div class="dash-unit" style="width:540px;" align="left">
+        <dtitle>Hub Charts</dtitle>
+        <hr>
+
+        <canvas class="chart" id="line-chart" width="150px" height="75px"></canvas>
+
+      </div>
+
+
+    </div>
+    <div class="col-sm-6 col-lg-6">
+      <div class="dash-unit" style="width:540px">
+        <dtitle>Helium Status</dtitle>
+        <hr>
+        <!--//////////////////////Helium Status/////////////////-->
+
+        <table class="display" id='helium-status-table'>
+          <thead>
+            <tr>
+              <th>Time Entered</th>
+              <th>Helium Container 1</th>
+              <th>Helium Container 2</th>
+              <th>Helium Container 3</th>
+              <th>Helium Container 4</th>
+              <th>Helium Expended</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <hr style=" border: 1px solid #fff">
+
+      </div>
+    </div>
+
+
+
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--///////////////////////////////////////Weather Search API////////////////// -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var appID = "eb7acd14dcfc608e19796902cddb4326";
+
+      $(".query_btn").click(function() {
+
+        var query_param = $(this).prev().val();
+
+
+        if ($(this).prev().attr("placeholder") == "Current Weather") {
+          var weather = "https://api.openweathermap.org/data/2.5/weather?q=" + query_param + "&APPID=" + appID;
+
+          $.getJSON(weather, function(json) {
+
+
+            $("#city").html(json.name);
+            $("#main_weather").html(json.weather[0].main);
+            $("#description_weather").html(json.weather[0].description);
+            $("#weather_image").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+            //Temp coversion//
+            function tempconvert() {
+              var tempmath = (((json.main.temp - 273.15) * 1.8) + 32);
+              return tempmath.toFixed(2);
+            };
+
+            $("#temperature").html(tempconvert() + "F");
+            $("#pressure").html(json.main.pressure + "mb/hPa");
+            $("#humidity").html(json.main.humidity + "%");
+            //Wind knots Convert//
+            function windconvert() {
+              var windmath = ((json.wind.speed) * 1.9438445);
+              return windmath.toFixed(2);
+            };
+            $("#wind").html(windconvert() + "Knts Deg: " + (json.wind.deg));
+
+            console.log(json);
+          });
+
+        }
+
+      })
+
+
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script type="text/javascript" src="assets/javascript/Clientlogic.js"></script>
+</body>
+
+</html>

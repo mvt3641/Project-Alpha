@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ASADI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Carlos Alvarez - Alvarez.is">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/main.css" rel="stylesheet">
+    <link href="assets/css/HUBstyle.css" rel="stylesheet">
+    <link href="css/font-style.css" rel="stylesheet">
+    <link href="css/flexslider.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lineandbars.js"></script>
+    <script type="text/javascript" src="js/dash-charts.js"></script>
+    <script type="text/javascript" src="js/gauge.js"></script>
+    <!-- NOTY JAVASCRIPT -->
+    <script type="text/javascript" src="js/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="js/noty/layouts/top.js"></script>
+    <script type="text/javascript" src="js/noty/layouts/topLeft.js"></script>
+    <script type="text/javascript" src="js/noty/layouts/topRight.js"></script>
+    <script type="text/javascript" src="js/noty/layouts/topCenter.js"></script>
+    <!-- You can add more layouts if you want -->
+    <script type="text/javascript" src="js/noty/themes/default.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 60px;
+    }
+    </style>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Google Fonts call. Font Used Open Sans & Raleway -->
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#btn-blog-next").click(function() {
+            $('#blogCarousel').carousel('next')
+        });
+        $("#btn-blog-prev").click(function() {
+            $('#blogCarousel').carousel('prev')
+        });
+
+        $("#btn-client-next").click(function() {
+            $('#clientCarousel').carousel('next')
+        });
+        $("#btn-client-prev").click(function() {
+            $('#clientCarousel').carousel('prev')
+        });
+
+    });
+
+    $(window).load(function() {
+
+        $('.flexslider').flexslider({
+            animation: "slide",
+            slideshow: true,
+            start: function(slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <!-- NAVIGATION MENU -->
+    <div class="navbar-nav navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><!--img src="images/logo30.png" alt=""-->ASADI </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!--li><a href="index.html"><i class="icon-home icon-white"></i> Home</a></li-->
+                    <li><a href="operationUI.html"><i class="icon-home icon-white"></i> Operations </a></li>
+                    <li><a href="HubIndex.html"><i class="icon-th icon-white"></i> HUB</a></li>
+                    <li><a href="tables.html"><i class="icon-th icon-white"></i> REPORT</a></li>
+                    <li><a href="clientUI.html"><i class="icon-lock icon-white"></i> Client </a></li>
+
+                    <!--li><a href="operationUI.html"><i class="icon-home icon-white"></i> Operations </a></li>
+                    <li class="active"><a href="HUBndex.html"><i class="icon-home icon-white"></i> HUB</a></li>
+                    <li><a href="tables.html"><i class="icon-th icon-white"></i> REPORT</a></li>
+                     <li class="active"><a href="Client.html"><i class="icon-home icon-white"></i> Client</a></li-->
+                    <!--li><a href="login.html"><i class="icon-lock icon-white"></i> Login</a></li>
+                    <li><a href="user.html"><i class="icon-user icon-white"></i> User</a></li-->
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="container">
+        <!-- FIRST ROW OF BLOCKS -->
+        <div class="row">
+            <!-- USER PROFILE BLOCK -->
+            <div class="col-sm-3 col-lg-3">
+                <div class="dash-unit">
+                    <dtitle>User Profile</dtitle>
+                    <hr>
+                    <div class="thumbnail">
+                        <!--img src="images/face80x80.jpg" alt="Marcel Newman" class="img-circle"-->
+                    </div>
+                    <!-- /thumbnail -->
+                    <h1>Bradshaw Kornegay</h1>
+                    <h3>Atlanta, GA</h3>
+                    <br>
+                    <div class="info-user">
+                        <span aria-hidden="true" class="li_user fs1"></span>
+                        <span aria-hidden="true" class="li_settings fs1"></span>
+                        <span aria-hidden="true" class="li_mail fs1"></span>
+                        <span aria-hidden="true" class="li_key fs1"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- DONUT CHART BLOCK -->
+            <div class="col-sm-3 col-lg-3">
+                <div class="dash-unit">
+                    <dtitle>Forecast Weather:</dtitle>
+                    <hr style="margin-bottom: 2px">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/33d75n84d39/atlanta/?unit=us" data-days="3" data-theme="original" data-baseColor="#3d3d3d" data-highColor="#d23e3e" data-lowColor="#b1c738">Atlanta, GA, United States</a>
+                    <script>
+                    ! function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://weatherwidget.io/js/widget.min.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "weatherwidget-io-js");
+                    </script>
+                </div>
+            </div>
+            <!-- DONUT CHART BLOCK -->
+            <div class="col-sm-3 col-lg-3">
+                <div class="dash-unit">
+                    <dtitle>Current Weather:</dtitle>
+                    <hr>
+                    <div class="weatherAPIBlock" style="background-color:  transparent">
+                        <ul class="list-group list-group-flush" style="background-color: transparent; list-style-type:none;">
+                            <li style="background-color:  transparent">City: <span id="city"></span></li>
+                            <li>Main Weather: <span id="main_weather"></span></li>
+                            <li>Description: <span id="description_weather"></span></li>
+                            <img id="weather_image" src="">
+                            <li>Temperature: <span id="temperature"></span></li>
+                            <li>Pressure: <span id="pressure"></span></li>
+                            <li>Humidity: <span id="humidity"></span></li>
+                            <li>Wind: <span id="wind"></span></li>
+                            <li>Description: <span id="description_weather"></span></li>
+                        </ul>
+                        <input class="weather-input" type="text" style="color:black;" placeholder="Current Weather">
+                        <button type="button" class="query_btn btn btn-default btn-sm">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <!-- LOCAL TIME BLOCK -->
+                <div class="half-unit">
+                    <dtitle>Local Time</dtitle>
+                    <hr>
+                    <div style="margin-left: 17px">
+                        <iframe src="http://free.timeanddate.com/clock/i63392cd/n25/fn6/fs18/fcb1c738/tct/pct/ftb/pd3/tt0/tw1/th1/ta1/tb4" frameborder="0" width="224" height="46" allowTransparency="true"></iframe>
+                        <!-- <div class="clockcenter">
+                        <digiclock>12:45:25</digiclock>
+                    </div> -->
+                    </div>
+                </div>
+                <!-- SERVER UPTIME -->
+                <div class="half-unit">
+                    <dtitle>Server Uptime</dtitle>
+                    <hr>
+                    <div class="cont">
+                        <p><img src="images/up.png" alt="">
+                            <bold>Up</bold> | 356ms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+        <!-- SECOND ROW OF BLOCKS -->
+        <div class="row">
+            <div class="col-sm-3 col-lg-3">
+                <!-- MAIL BLOCK -->
+                <div class="dash-unit">
+                    <dtitle>Twitter</dtitle>
+                    <hr style="margin-bottom: 9px;">
+                    <div style="border-style: inset; border-color: #b1c738; width: 220px; height: 250px; margin: auto"><a class="twitter-timeline" data-width="230" data-height="240" data-theme="dark" data-link-color="#b1c738" href="https://twitter.com/DeptofDefense?ref_src=twsrc%5Etfw">Tweets by DeptofDefense</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+                <!-- /dash-unit -->
+                <div class="half-unit">
+                    <dtitle>Search Flight Data Log</dtitle>
+                    <hr>
+                    <div class="cont">
+                        <div class="info-aapl">
+                            <button type="submit" class="btn btn-primary mb-2" id="searchHistory" style="background-color: #b1c738">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /span3 -->
+            <!-- GRAPH CHART - lineandbars.js file -->
+            <div class="col-sm-3 col-lg-3">
+                <div class="dash-unit">
+                    <dtitle>Current Flight Status</dtitle>
+                    <hr>
+                    <div class="alertToggle col-md-12" id="#atlanta-Site">
+                        <ul class="list-group" style="list-style-type:none;">
+                            <li  style="padding-left: 50px> Site: Atlanta">
+                                <br>
+                                <button type="button" class="btn btn-success aloftButton" style="margin-left: 50px">Aloft</button>
+                                <button type="button" class="btn btn-danger mooredButton" style="margin-left: 50px"> Moored</button>
+                            </li>
+                            <li >Status: <span id="displayStatus"> Display</span></li>
+                            <li >Reason: <span id="displayReason"> Display</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="half-unit">
+                    <dtitle>To Do List</dtitle>
+                    <hr>
+                    <div class="cont">
+                        <p>
+                            <bold>13</bold> | Pending Tasks</p>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%;"><span class="sr-only">60% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hub Operational Charts Block -->
+            <div class="col-sm-6 col-lg-6">
+                <div class="dash-unit" style="height:459px">
+                    <dtitle>Hub Operational Charts Block</dtitle>
+                    <hr>
+                    <br>
+                    <br>
+                    <canvas class="chart" id="line-chart" width="150px" height="75px"></canvas>
+
+                </div>
+            </div>
+            <!--  </div> -->
+        </div>
+        <!-- /container -->
+        <div id="footerwrap">
+            <footer class="clearfix"></footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12">
+                        <!--p><img src="images/logo.png" alt=""></p>
+                        <p>Blocks Dashboard Theme - Crafted With Love - Copyright 2013</p-->
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /footerwrap -->
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script>
+        var config = {
+            apiKey: "AIzaSyCzntWHt0eQrf8_T7sNXd7HDcmHmJQK-xM",
+            authDomain: "realtime-d6489.firebaseapp.com",
+            databaseURL: "https://realtime-d6489.firebaseio.com",
+            projectId: "realtime-d6489",
+            storageBucket: "realtime-d6489.appspot.com",
+            messagingSenderId: "540451789449"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+        <script src="assets/javascript/hubLogic.js"></script>
+</body>
+
+</html>
