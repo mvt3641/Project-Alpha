@@ -21,7 +21,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
-app.use(apiRoutes);
+//app.use(apiRoutes);
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 

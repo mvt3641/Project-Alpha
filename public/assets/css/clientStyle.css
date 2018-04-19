@@ -1,0 +1,19 @@
+
+
+#tableover{
+  overflow:auto;
+}
+
+.weather-align {
+
+}
+
+dtitle {
+  font-weight:bolder;
+
+}
+
+.chart{
+  position:relative;
+  top:-24px;
+}
