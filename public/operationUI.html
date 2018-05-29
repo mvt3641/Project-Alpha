@@ -138,16 +138,16 @@
                                <div class="form-row">
                                  <div class="form-group col-md-3">
                                    <!--label for="inputHContainer1">Helium Container 1</label-->
-                                   <input type="text" class="form-control" placeholder="Date Format: MM/DD/YY" id="Logged-By-Input">
+                                   <input type="text" class="form-control" placeholder="Date Format: YYYY-mm-dd" id="dateLogged">
                                  </div>
                                  <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Logged-By-Input" id="Logged-By-Input">
+                                   <input type="text" class="form-control" placeholder="Logged-By-Input" id="userLogged">
                                  </div>
                                  <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Time-Logged-input" id="Time-Logged-Input">
+                                    <input type="text" class="form-control" placeholder="Time Format: 00hrs" id="TimeLogged">
                                  </div>
                                  <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="System" id="#System-Input">
+                                   <input type="text" class="form-control" placeholder="System SN" id="#aerostatSN">
                                  </div>
                                </div>
                                <div class="form-row">
@@ -155,7 +155,7 @@
                                    <input type="text" class="form-control" placeholder="System-Status-Input" id="System-Status-Input">
                                  </div-->
                                  <div class="form-group col-md-3">
-                                    <select class="form-control" id="System-Status-Input">
+                                    <select class="form-control" id="System-Status">
                                       <option>FMC</option>
                                       <option>NMC</option>
                                       <option>PMC</option>
@@ -173,6 +173,7 @@
                                       <option>SM</option>
                                       <option>UM</option>
                                       <option>BD</option>
+                                      <option>Aloft</option>
                                     </select>
                                   </div>
                                </div>
@@ -337,6 +338,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
      <script src="assets/firebase/heliumDB.js"></script>
+     <!-- <script src="assets/javascript/operation.js"></script> -->
 
      <script type="text/javascript">
      $(document).ready(function() {

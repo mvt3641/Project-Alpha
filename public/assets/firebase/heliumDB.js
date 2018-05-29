@@ -71,56 +71,56 @@ firebase.database().ref('Site/HeliumData/').limitToLast(1).on('child_added', fun
 });
 
 /*flight Data queries*/
-function saveFlightData() {
-
- event.preventDefault();
-
-  var dateLogged = $("#Logged-By-Input").val().trim();
-  var timeLogged = $("#Logged-By-Input").val().trim();
-  var loggedBy = $("#Time-Logged-Input").val().trim();
-  var system = 0;//$("#System-Input").val().trim();
-  var systemStatus = $("#System-Status-Input").val().trim();
-  var flightAltitude = $("#Flight-Altitude-Input").val().trim();
-  var reasonMoored = $("#Reason-Moored-Input").val().trim();
-  var Launches = $("#Launches-Input").val().trim();
-
-  var recoveries = $("#Recoveries-Input").val().trim();
-  var tetherTension = $("#Tether-Tension-Input").val().trim();
-  var groundWinds = $("#Ground-Winds-Input").val().trim();
-  var windsAloft = $("#Winds-Aloft-Input").val().trim();
-  var groundTemp = $("#Ground-Temp-Input").val().trim();
-  var barometricPressure = $("#Barometric-Pressure-Input").val().trim();
-  var pitch = $("#Pitch-Input").val().trim();
-  var heliumPressure = $("#Helium-Pressure-Input").val().trim();
-  var ballonetPressure = $("#Ballonet-Pressure-Input").val().trim();
-  var notes = $("#Notes").val().trim();
-
-  var FlightData={
-   dateLogged: dateLogged,
-   timeLogged: timeLogged,
-   loggedBy:loggedBy,
-   system:system,
-   systemStatus:systemStatus,
-   flightAltitude:flightAltitude,
-   reasonMoored:reasonMoored,
-   Launches:Launches,
-   recoveries:recoveries,
-   tetherTension:tetherTension,
-   groundWinds:groundWinds,
-   windsAloft:windsAloft,
-   groundTemp:groundTemp,
-   barometricPressure:barometricPressure,
-   pitch:pitch,
-   heliumPressure:heliumPressure,
-   ballonetPressure:ballonetPressure,
-   notes:notes
-  };
-  console.log(FlightData);
-
-
-firebase.database().ref('Site/FlightData/').push(FlightData);
-console.log("FlightData Update Success");
-}
+// function saveFlightData() {
+//
+//  event.preventDefault();
+//
+//   var dateLogged = $("#Logged-By-Input").val().trim();
+//   var timeLogged = $("#Logged-By-Input").val().trim();
+//   var loggedBy = $("#Time-Logged-Input").val().trim();
+//   var system = 0;//$("#System-Input").val().trim();
+//   var systemStatus = $("#System-Status-Input").val().trim();
+//   var flightAltitude = $("#Flight-Altitude-Input").val().trim();
+//   var reasonMoored = $("#Reason-Moored-Input").val().trim();
+//   var Launches = $("#Launches-Input").val().trim();
+//
+//   var recoveries = $("#Recoveries-Input").val().trim();
+//   var tetherTension = $("#Tether-Tension-Input").val().trim();
+//   var groundWinds = $("#Ground-Winds-Input").val().trim();
+//   var windsAloft = $("#Winds-Aloft-Input").val().trim();
+//   var groundTemp = $("#Ground-Temp-Input").val().trim();
+//   var barometricPressure = $("#Barometric-Pressure-Input").val().trim();
+//   var pitch = $("#Pitch-Input").val().trim();
+//   var heliumPressure = $("#Helium-Pressure-Input").val().trim();
+//   var ballonetPressure = $("#Ballonet-Pressure-Input").val().trim();
+//   var notes = $("#Notes").val().trim();
+//
+//   var FlightData={
+//    dateLogged: dateLogged,
+//    timeLogged: timeLogged,
+//    loggedBy:loggedBy,
+//    system:system,
+//    systemStatus:systemStatus,
+//    flightAltitude:flightAltitude,
+//    reasonMoored:reasonMoored,
+//    Launches:Launches,
+//    recoveries:recoveries,
+//    tetherTension:tetherTension,
+//    groundWinds:groundWinds,
+//    windsAloft:windsAloft,
+//    groundTemp:groundTemp,
+//    barometricPressure:barometricPressure,
+//    pitch:pitch,
+//    heliumPressure:heliumPressure,
+//    ballonetPressure:ballonetPressure,
+//    notes:notes
+//   };
+//   console.log(FlightData);
+//
+//
+// firebase.database().ref('Site/FlightData/').push(FlightData);
+// console.log("FlightData Update Success");
+// }
 
 firebase.database().ref('Site/FlightData/').orderByChild("timeLogged")//dateLogged)
   .limitToFirst(6)

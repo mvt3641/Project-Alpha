@@ -2,6 +2,7 @@
 var express = require('express');
 var mongoose =require('mongoose');
 // Import models
+var flightrec = require('../models/flightrecmodel');
 //var ----- = require('../models/ ex.flightmodel')
 //requring the mongodb database connection
   var db = require('../config/connection');
@@ -9,9 +10,25 @@ mongoose.Promise = Promise;
 //creating a router for export to handle middleware and routing
 var router = express.Router();
 
+// Saving Flight Data to DB//
+
+router.post('/api/flightrecord', function (req,res){
+  if (err) throw err;
+  console.log(req.body);
+});
+
+
+
+
+
+
+
+
+
+
+
 //get all data from the mysql table
 router.post('/flightdata',function(req,res){
-
 
   //Since this in an uploaded file, sort by _id of upload
 flight.find(searchmon).sort({"_id":1}).exec(function(err,results){
