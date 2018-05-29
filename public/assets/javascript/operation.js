@@ -12,8 +12,7 @@ function SwapDivsWithClick(div1,div2) {
       d1.style.display = "block";
       d2.style.display = "none";
    }
-};
-
+}
 
 function saveFlightData() {
 
@@ -77,7 +76,7 @@ $.ajax({
 .then(function(res) {
   console.log(res);
 })
-})
+};
 
 // firebase.database().ref('Site/FlightData/').push(FlightData);
 // console.log("FlightData Update Success");
