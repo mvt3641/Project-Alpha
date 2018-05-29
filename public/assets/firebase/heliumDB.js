@@ -1,15 +1,15 @@
 /* global moment firebase */
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCzntWHt0eQrf8_T7sNXd7HDcmHmJQK-xM",
-  authDomain: "realtime-d6489.firebaseapp.com",
-  databaseURL: "https://realtime-d6489.firebaseio.com",
-  projectId: "realtime-d6489",
-  storageBucket: "realtime-d6489.appspot.com",
-  messagingSenderId: "540451789449"
-};
-firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyCzntWHt0eQrf8_T7sNXd7HDcmHmJQK-xM",
+//   authDomain: "realtime-d6489.firebaseapp.com",
+//   databaseURL: "https://realtime-d6489.firebaseio.com",
+//   projectId: "realtime-d6489",
+//   storageBucket: "realtime-d6489.appspot.com",
+//   messagingSenderId: "540451789449"
+// };
+// firebase.initializeApp(config);
 
 // Initial Values
 var groundWinds = [];
