@@ -122,38 +122,38 @@ firebase.database().ref('Site/HeliumData/').limitToLast(1).on('child_added', fun
 // console.log("FlightData Update Success");
 // }
 
-firebase.database().ref('Site/FlightData/').orderByChild("timeLogged")//dateLogged)
-  .limitToFirst(6)
-  .once('value')
-  .then(function(records) {
-  var recObj = records.val();
-  $("#search-report-table > tbody").empty();
-  for(var child in recObj){
-    $("#flight-status-table> tbody").append("<tr><td>" + recObj[child].dateLogged + "</td><td>"+ recObj[child].loggedBy
-     + "</td><td>" +recObj[child].timeLogged+ "</td><td>" +recObj[child].system+ "</td><td>"  + recObj[child].systemStatus + "</td><td>"
-     + recObj[child].flightAltitude + "</td><td>" + recObj[child].reasonMoored + "</td><td>"
-     + recObj[child].Launches + "</td><td>"+ recObj[child].recoveries+ "</td><td>" +recObj[child].tetherTension + "</td><td>" +recObj[child].groundWinds
-     + "</td><td>"+recObj[child].windsAloft + "</td><td>"+recObj[child].groundTemp + "</td><td>"+ recObj[child].barometricPressure + "</td><td>"+recObj[child].pitch
-     + "</td><td>"+recObj[child].heliumPressure + "</td><td>"+recObj[child].ballonetPressure + "</td><td>"+recObj[child].notes + "</td></tr>" );
-  }
-});
+// firebase.database().ref('Site/FlightData/').orderByChild("timeLogged")//dateLogged)
+//   .limitToFirst(6)
+//   .once('value')
+//   .then(function(records) {
+//   var recObj = records.val();
+//   $("#search-report-table > tbody").empty();
+//   for(var child in recObj){
+//     $("#flight-status-table> tbody").append("<tr><td>" + recObj[child].dateLogged + "</td><td>"+ recObj[child].loggedBy
+//      + "</td><td>" +recObj[child].timeLogged+ "</td><td>" +recObj[child].system+ "</td><td>"  + recObj[child].systemStatus + "</td><td>"
+//      + recObj[child].flightAltitude + "</td><td>" + recObj[child].reasonMoored + "</td><td>"
+//      + recObj[child].Launches + "</td><td>"+ recObj[child].recoveries+ "</td><td>" +recObj[child].tetherTension + "</td><td>" +recObj[child].groundWinds
+//      + "</td><td>"+recObj[child].windsAloft + "</td><td>"+recObj[child].groundTemp + "</td><td>"+ recObj[child].barometricPressure + "</td><td>"+recObj[child].pitch
+//      + "</td><td>"+recObj[child].heliumPressure + "</td><td>"+recObj[child].ballonetPressure + "</td><td>"+recObj[child].notes + "</td></tr>" );
+//   }
+// });
 
 /* Charting Data**/
-firebase.database().ref('Site/FlightData/').orderByChild('timeLogged')//dateLogged)
-  .limitToLast(24)
-  .once('value')
-  .then(function(records) {
-  var recObj = records.val();
-  $("#flight-status-table > tbody").empty();
-  for(var child in recObj){
-
-      groundWinds.push(Number(recObj[child].groundWinds));
-      windsAloft.push(Number(recObj[child].windsAloft));
-      flightAltitude.push(Number(recObj[child].flightAltitude));
-      tetherTension.push(Number(recObj[child].tetherTension));
-      //console.log("groundWinds " + groundWinds);
-  }
-});
+// firebase.database().ref('Site/FlightData/').orderByChild('timeLogged')//dateLogged)
+//   .limitToLast(24)
+//   .once('value')
+//   .then(function(records) {
+//   var recObj = records.val();
+//   $("#flight-status-table > tbody").empty();
+//   for(var child in recObj){
+//
+//       groundWinds.push(Number(recObj[child].groundWinds));
+//       windsAloft.push(Number(recObj[child].windsAloft));
+//       flightAltitude.push(Number(recObj[child].flightAltitude));
+//       tetherTension.push(Number(recObj[child].tetherTension));
+//       //console.log("groundWinds " + groundWinds);
+//   }
+// });
 
 
 
