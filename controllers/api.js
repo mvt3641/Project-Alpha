@@ -12,10 +12,10 @@ var router = express.Router();
 
 // Saving Flight Data to DB//
 
-router.post('/api/flightrecord', function (req, res){
-  if (err) throw err;
+router.post('/api/flightrecord', function(req, res) {
+ // if (err) throw err;
   console.log(req.body);
-  res.json()
+   res.json("record saved");
 });
 
 
@@ -29,7 +29,7 @@ router.post('/api/flightrecord', function (req, res){
 
 
 //get all data from the mysql table
-router.post('/flightdata',function(req,res){
+router.post('/api/flightdata',function(req,res){
 
   //Since this in an uploaded file, sort by _id of upload
 flight.find(searchmon).sort({"_id":1}).exec(function(err,results){

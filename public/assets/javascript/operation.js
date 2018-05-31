@@ -67,9 +67,7 @@ function saveFlightData() {
 $.ajax({
   type:'POST',
   url:'/api/flightrecord',
-  data: JSON.stringify({
-    FlightData
-  }),
+  data: JSON.stringify(FlightData),
   contentType: 'application/json',
   dataType: 'json'
 })
