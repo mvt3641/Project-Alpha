@@ -12,9 +12,10 @@ var router = express.Router();
 
 // Saving Flight Data to DB//
 
-router.post('/api/flightrecord', function (req,res){
+router.post('/api/flightrecord', function (req, res){
   if (err) throw err;
   console.log(req.body);
+  res.json()
 });
 
 

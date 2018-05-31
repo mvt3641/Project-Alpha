@@ -4,8 +4,10 @@
   "description": "ASADI pre-beta",
   "main": "server.js",
   "scripts": {
+    "prestart": "start mongod && sleep 4 ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
+
   },
   "repository": {
     "type": "git",
