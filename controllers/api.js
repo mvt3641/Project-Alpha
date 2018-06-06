@@ -1,6 +1,7 @@
 //requiring express for routing and server services
 var express = require('express');
 var mongoose = require('mongoose');
+var siteinfo = require('../models/sitemodel');
 // Import models
 var flightrec = require('../models/flightrecmodel');
 //var ----- = require('../models/ ex.flightmodel')
@@ -16,7 +17,7 @@ router.post('/api/flightrecord', function(req, res) {
   // if (err) throw err;
   console.log(req.body);
 
-  var url = "mongodb://localhost:27017/flightdatatest";
+  var url = "mongodb://localhost:27017/PGSStestdb";
 
   var flightlog = new flightrec(req.body);
   mongoose.connect(url, (err, db) => {
@@ -111,28 +112,38 @@ router.get('/api/pax', function(req, res) {
   })
 })
 
+
 /////////SITE ROUTE//////////////////
 
-router.post('/api/site', function(req, res) {
-  db.query('INSERT INTO location SET ?', req.body, function(err, results) {
+router.post('/api/site', (req, res) => {
+  console.log(req.body.hub);
+  console.log('***********************');
+  console.log(req.body);
+  var newsite = new siteinfo({
+    sitename: req.body.sitename,
+    hub: req.body.hub,
+    system: req.body.system,
+    supportingunit: req.body.supportingunit
+  });
+  var Newlocationdb = req.body.sitename.toLowerCase().replace(/\s/g, '');
+  console.log("*******************")
+  console.log(newsite);
+  //  //Created new DB in mongo for Site
+  var url = "mongodb://localhost:27017/PGSStestdb" ;
+
+  mongoose.connect(url, (err, db) => {
     if (err) throw err;
-    console.log(req.body);
-    //response to client side
-    db.query('SELECT * FROM location', function(err, results) {
-      if (err) throw err;
-      res.json(results);
+    console.log("Database created for " + Newlocationdb + "!");
+    newsite.save(function(err,siteinfo) {
+      if (err) return console.error(err);
+      console.log(siteinfo.sitename + " Site information to record")
+      // mongoose.disconnect();
     })
+  }).then(function() {
+    res.json(newsite);
   })
+
 });
-
-
-router.get('/api/site', function(req, res) {
-  db.query('SELECT * FROM location', function(err, results) {
-    if (err) throw err;
-    res.json(results);
-  })
-});
-
 
 
 module.exports = router;

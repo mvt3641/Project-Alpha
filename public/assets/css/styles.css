@@ -1,0 +1,35 @@
+.chart-container{
+  border: 2px solid black;
+  text-align: center;
+  position:relative;
+  width: 400px;
+  height: 400px;
+  left: 350px;
+}
+
+.dropdown{
+  position: relative;
+  top: -240px;
+  left: 500px;
+}
+
+.datesearchwin{
+  position: relative;
+top: -350px;
+left: 900px;
+}
+
+#datetb{
+  width:150px;
+}
+
+.roster{
+  border: 2px solid black;
+}
+.addednewpax.addednewsite{
+  background-color: green;
+}
+
+/* #myChart{
+  float:right;
+} */
