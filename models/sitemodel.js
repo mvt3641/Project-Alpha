@@ -20,8 +20,8 @@ supportingunit:{
 flightdata: [
     {
       // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Note model
+      type: mongoose.Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the flightrec model
       ref: "flightrec"
     }
   ]

@@ -2,8 +2,12 @@ var mongoose = require('mongoose');
 
 
 
-var flightrecSchema = mongoose.Schema({
+
+
   // _id: mongoose.Schema.Types.ObjectId,
+var flightrecSchema = mongoose.Schema({
+
+ // _id: mongoose.Schema.Types.ObjectId,
 
 dateLogged: {
   type:{},
@@ -63,6 +67,6 @@ notes:{
 });
 
 
-var flightrec =mongoose.model("flightrec",flightrecSchema,"Site Alpha");
+var flightrec = mongoose.model("flightrec",flightrecSchema);
 
 module.exports= flightrec;

@@ -1,12 +1,14 @@
 //requiring express for routing and server services
 var express = require('express');
 var mongoose = require('mongoose');
-var siteinfo = require('../models/sitemodel');
-// Import models
-var flightrec = require('../models/flightrecmodel');
+// var siteinfo = require('../models/sitemodel');
+// // Import models
+// var flightrec = require('../models/flightrecmodel');
 //var ----- = require('../models/ ex.flightmodel')
 //requring the mongodb database connection
-var db = require('../config/connection');
+var dbconnect = require('../config/connection');
+var db = require('../models');
+
 mongoose.Promise = Promise;
 //creating a router for export to handle middleware and routing
 var router = express.Router();
@@ -16,22 +18,25 @@ var router = express.Router();
 router.post('/api/flightrecord', function(req, res) {
   // if (err) throw err;
   console.log(req.body);
+db.flightrec.create(req.body)
+.then(function(dbfr) {
+  // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
+// { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+// Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
 
-  var url = "mongodb://localhost:27017/PGSStestdb";
-
-  var flightlog = new flightrec(req.body);
-  mongoose.connect(url, (err, db) => {
-    if (err) throw err;
-    console.log("hour logged " + req.body.Time + "!");
-    flightlog.save(function(err, flightrec) {
-      if (err) return console.error(err);
-      console.log(flightrec.Time + " hourly log saved")
-      // mongoose.disconnect();
+  return db.siteinfo.findOneAndUpdate({sitename:"alpha2"}, { $push: { flightdata: dbfr._id } }, { new: true });
+})
+.then(function(dbsite) {
+      // If the User was updated successfully, send it back to the client
+      res.json(dbsite +"record saved");
     })
-  })
-
-  res.json("record saved");
+    .catch(function(err) {
+      // If an error occurs, send it back to the client
+      res.json(err);
+    });
 });
+
+
 
 
 
@@ -119,29 +124,33 @@ router.post('/api/site', (req, res) => {
   console.log(req.body.hub);
   console.log('***********************');
   console.log(req.body);
-  var newsite = new siteinfo({
-    sitename: req.body.sitename,
-    hub: req.body.hub,
-    system: req.body.system,
-    supportingunit: req.body.supportingunit
+  // use site model to save to db
+  db.siteinfo.create(req.body)
+  // db.siteinfo.create({
+  //   sitename: req.body.sitename,
+  //   hub: req.body.hub,
+  //   system: req.body.system,
+  //   supportingunit: req.body.supportingunit
+  // })
+  // var Newlocationdb = req.body.sitename.toLowerCase().replace(/\s/g, '');
+  // console.log("*******************")
+  // //  //Created new DB in mongo for Site
+  // var url = "mongodb://localhost:27017/PGSStestdb" ;
+  //
+  // mongoose.connect(url, (err, db) => {
+  //   if (err) throw err;
+  //   console.log("Database created for " + Newlocationdb + "!");
+  //   newsite.save(function(err,siteinfo) {
+  //     if (err) return console.error(err);
+  //     console.log(siteinfo.sitename + " Site information to record")
+  //     // mongoose.disconnect();
+  //   })
+  // If succeful return site saved to client
+  .then(function() {
+    res.json("site saved");
+  }).catch(function(err){
+    res.json(err);
   });
-  var Newlocationdb = req.body.sitename.toLowerCase().replace(/\s/g, '');
-  console.log("*******************")
-  console.log(newsite);
-  //  //Created new DB in mongo for Site
-  var url = "mongodb://localhost:27017/PGSStestdb" ;
-
-  mongoose.connect(url, (err, db) => {
-    if (err) throw err;
-    console.log("Database created for " + Newlocationdb + "!");
-    newsite.save(function(err,siteinfo) {
-      if (err) return console.error(err);
-      console.log(siteinfo.sitename + " Site information to record")
-      // mongoose.disconnect();
-    })
-  }).then(function() {
-    res.json(newsite);
-  })
 
 });
 
