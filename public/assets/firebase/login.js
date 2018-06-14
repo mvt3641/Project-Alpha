@@ -65,6 +65,15 @@ firebase.initializeApp(config);
       })
   });
 
+
+  function check_role_collec(){
+    $.getJSON({
+      url:"/api/sitelist"
+    }), function(res){
+      console.log(res);
+    }
+  }
+
   function resetRecaptcha() {
       return window.recaptchaVerifier.render().then(function(widgetId) {
           grecaptcha.reset(widgetId);

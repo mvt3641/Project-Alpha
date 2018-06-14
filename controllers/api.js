@@ -118,7 +118,7 @@ router.get('/api/pax', function(req, res) {
 })
 
 
-/////////SITE ROUTE//////////////////
+/////////SITE ROUTES//////////////////
 
 router.post('/api/site', (req, res) => {
   console.log(req.body.hub);
@@ -152,6 +152,17 @@ router.post('/api/site', (req, res) => {
     res.json(err);
   });
 
+});
+
+router.get('/api/sitelist',(req,res) =>{
+  console.log(req.body);
+  db.siteinfo.find({sitename:"alpha2"})
+.then(function(site){
+  res.json(site +"site exist");
+})
+.catch(function(err){
+  res.json(err);
+});
 });
 
 
