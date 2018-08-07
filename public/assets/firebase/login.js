@@ -22,7 +22,7 @@ firebase.initializeApp(config);
           .then(user => {
               alert('you succeeded')
               //Handling the successful authentication.
-              window.location = "site.html";
+              window.location = "operationUI.html";
           }).catch(function (error) {
           //Handling the error showcasing. });
               alert('you failed. try again')
