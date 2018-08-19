@@ -1,0 +1,23 @@
+.row{
+	background-color: grey;
+}
+#forecastWin {
+	overflow:auto;
+	border: 1px solid black;
+}
+
+.FWindow div:nth-child(even) {
+		background-color: #79b;
+}
+
+#myChart {
+
+}
+
+.graphwinchart {
+  position: relative;
+height: 100%;
+width: 100%;
+overflow: auto;
+}
+}
