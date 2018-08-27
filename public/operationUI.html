@@ -2,240 +2,252 @@
 
 <html lang="en-us">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <title>Operations</title>
-    <link rel="icon"
-      type="image/png"
-      href="ASADIlogo.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--link href="assets/css/bootstrap.min.css" rel="stylesheet"-->
-    <link href="assets/css/operation.css" rel="stylesheet">
-    <link href="assets/css/table.css" rel="stylesheet">
-    <link href="assets/css/weathermod.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Operations</title>
+  <link rel="icon" type="image/png" href="ASADIlogo.png">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--link href="assets/css/bootstrap.min.css" rel="stylesheet"-->
+  <link href="assets/css/operation.css" rel="stylesheet">
+  <link href="assets/css/table.css" rel="stylesheet">
+  <link href="assets/css/weathermod.css" rel="stylesheet">
+  <link href="assets/css/chart.css" rel="stylesheet">
 
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script src="assets/javascript/operation.js"></script>
-    <!-- <script src="assets/firebase/heliumDB.js"></script> -->
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <!-- <script src="assets/javascript/operation.js"></script> -->
+  <!-- <script src="assets/firebase/heliumDB.js"></script> -->
 
-  </head>
+</head>
 
-  <body>
-    <div class="navbar-nav navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<body>
+  <div class="navbar-nav navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><!--img src="images/logo30.png" alt=""-->ASADI</a>
-        </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="operationUI.html"><i class="icon-home icon-white"></i> Operations </a></li>
-              <li><a href="HubIndex.html"><i class="icon-th icon-white"></i> HUB</a></li>
-              <li><a href="clientUI.html"><i class="icon-lock icon-white"></i> Client </a></li>
+        <a class="navbar-brand" href="index.html">
+          <!--img src="images/logo30.png" alt=""-->ASADI</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="operationUI.html"><i class="icon-home icon-white"></i> Operations </a></li>
+          <li><a href="HubIndex.html"><i class="icon-th icon-white"></i> HUB</a></li>
+          <li><a href="clientUI.html"><i class="icon-lock icon-white"></i> Client </a></li>
 
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--divend-->
+  <br><br><br>
+  <div class="container">
+    <div class="row">
+      <!-- DONUT CHART BLOCK -->
+      <div class="col-sm-4 col-lg-4">
+
+        <div class="dash-unit">
+          <dtitle>Current Weather:</dtitle>
+          <hr>
+          <div class="weatherAPIBlock" style="background-color:  transparent">
+            <ul class="list-group list-group-flush" style="background-color: transparent; list-style-type:none;">
+              <li style="background-color:  transparent">City: <span id="city"></span></li>
+              <li>Main Weather: <span id="main_weather"></span></li>
+              <li>Description: <span id="description_weather"></span></li>
+              <!--img id="weather_image" src=""-->
+              <li>Temperature: <span id="temperature"></span></li>
+              <li>Pressure: <span id="pressure"></span></li>
+              <li>Humidity: <span id="humidity"></span></li>
+              <li>Wind: <span id="wind"></span></li>
+              <li>Description: <span id="description_weather"></span></li>
             </ul>
+
+            <input class="weather-input" type="text" placeholder="Enter city name">
+            <button type="button" class="query_btn btn btn-default btn-sm" style="margin-top:-18px">Search</button>
           </div>
         </div>
-    </div><!--divend-->
-    <br><br><br>
-     <div class="container">
-       <div class="row">
-         <!-- DONUT CHART BLOCK -->
-           <div class="col-sm-4 col-lg-4">
 
-             <div class="dash-unit">
-                     <dtitle>Current Weather:</dtitle>
-                     <hr>
-                     <div class="weatherAPIBlock" style="background-color:  transparent">
-                         <ul class="list-group list-group-flush" style="background-color: transparent; list-style-type:none;">
-                             <li style="background-color:  transparent">City: <span id="city"></span></li>
-                             <li>Main Weather: <span id="main_weather"></span></li>
-                             <li>Description: <span id="description_weather"></span></li>
-                             <!--img id="weather_image" src=""-->
-                             <li>Temperature: <span id="temperature"></span></li>
-                             <li>Pressure: <span id="pressure"></span></li>
-                             <li>Humidity: <span id="humidity"></span></li>
-                             <li>Wind: <span id="wind"></span></li>
-                             <li>Description: <span id="description_weather"></span></li>
-                         </ul>
+      </div>
 
-                         <input class="weather-input" type="text" placeholder="Enter city name">
-                         <button type="button" class="query_btn btn btn-default btn-sm" style="margin-top:-18px">Search</button>
-                     </div>
-                 </div>
+      <!-- 5 Day Weather Forecast -->
+      <div class="col-sm-4 col-lg-4">
+        <div class="dash-unit" style="overflow: auto;">
+          <header class="Forecast-header" style="background-color:#dde;"> 5 day Weather Forecast
+          </header>
+          <div id="forecastWin" class="FWindow">
+          </div>
 
-           </div>
+        </div>
+      </div>
 
-         <!-- 5 Day Weather Forecast -->
-           <div class="col-sm-4 col-lg-4">
-            <div class="dash-unit" style="overflow: auto;">
-              <header class="Forecast-header" style="background-color:#dde;"> 5 day Weather Forecast
-              </header>
-              <div id="forecastWin" class="FWindow">
-              </div>
+      <!-- Weather Graph -->
+      <div class="col-sm-4 col-lg-4">
+        <div class="dash-unit">
+          <div class="graphwinchart">
+            <canvas id="myChart"></canvas>
+          </div>
 
-            </div>
-           </div>
+        </div>
+      </div>
+      <!--row1 end-->
+      <div class="row">
+        <div class="col-sm-11 col-lg-11">
+          <div class="dash-unit-entry">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#metricsTab" data-toggle="tab">System Flight Metrics</a>
+              </li>
+              <li>
+                <a href="#flightTab" data-toggle="tab">Flight Data Log</a>
+              </li>
+              <li>
+                <a href="#heliumTab" data-toggle="tab">Helium Status Log</a>
+              </li>
+            </ul>
 
-                   <!-- Weather Graph -->
-           <div class="col-sm-4 col-lg-4">
-                <div class="dash-unit">
-                  <div class= "graphwinchart">
-                  <canvas id="myChart"></canvas>
+            <div class="tab-content">
+              <div id="metricsTab" class="tab-pane active">
+                <div class="chart-container">
+
+                  <canvas id="barChart" class="chart-canvas"></canvas>
+                  <canvas id="windChart" class="chart-canvas"></canvas>
+                  <canvas id="RadarChart" class="chart-canvas"></canvas>
+                  <!-- <canvas id= -->
+
                 </div>
 
-           </div>
-       </div><!--row1 end-->
-       <div class="row">
-          <div class="col-sm-11 col-lg-11">
-               <div class="dash-unit-entry">
-                   <ul class="nav nav-tabs">
-                      <li class="active">
-                        <a href="#metricsTab" data-toggle="tab">System Flight Metrics</a>
-                      </li>
-                      <li>
-                        <a href="#flightTab" data-toggle="tab">Flight Data Log</a>
-                      </li>
-                      <li>
-                        <a href="#heliumTab" data-toggle="tab">Helium Status Log</a>
-                      </li>
-                  </ul>
+                <!-- <canvas id="line-chart" width="150" height="60"></canvas> -->
+              </div>
 
-                  <div class="tab-content">
-                    <div id="metricsTab" class="tab-pane active">
-                      <canvas id="line-chart" width="150" height="60"></canvas>
+              <div id="flightTab" class="tab-pane">
+
+                <!--flight Data entry-->
+                <br>
+                <form id="flightFormId" style="display:none;">
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <!--label for="inputHContainer1">Helium Container 1</label-->
+                      <input type="text" class="form-control" placeholder="Date Format: YYYY-mm-dd" id="dateLogged">
                     </div>
-
-                     <div id="flightTab" class="tab-pane">
-
-                       <!--flight Data entry-->
-                        <br>
-                         <form id="flightFormId" style="display:none;">
-                               <div class="form-row">
-                                 <div class="form-group col-md-3">
-                                   <!--label for="inputHContainer1">Helium Container 1</label-->
-                                   <input type="text" class="form-control" placeholder="Date Format: YYYY-mm-dd" id="dateLogged">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Logged-By-Input" id="userLogged">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Time Format: 00hrs" id="TimeLogged">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="System SN" id="aerostatSN">
-                                 </div>
-                               </div>
-                               <div class="form-row">
-                                 <!--div class="form-group col-md-3">
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Logged-By-Input" id="userLogged">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Time Format: 00hrs" id="TimeLogged">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="System SN" id="aerostatSN">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <!--div class="form-group col-md-3">
                                    <input type="text" class="form-control" placeholder="System-Status-Input" id="System-Status-Input">
                                  </div-->
-                                 <div class="form-group col-md-3">
-                                    <select class="form-control" id="System-Status">
+                    <div class="form-group col-md-3">
+                      <select class="form-control" id="System-Status">
                                       <option>FMC</option>
                                       <option>NMC</option>
                                       <option>PMC</option>
                                     </select>
-                                  </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Flight Altitude" id="Flight-Altitude-Input">
-                                 </div>
-                                 <!--div class="form-group col-md-3">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Flight Altitude" id="Flight-Altitude-Input">
+                    </div>
+                    <!--div class="form-group col-md-3">
                                    <input type="text" class="form-control" placeholder="Reason-Moored" id="Reason-Moored-Input">
                                  </div-->
-                                 <div class="form-group col-md-3">
-                                    <select class="form-control" id="Reason-Moored-Input">
+                    <div class="form-group col-md-3">
+                      <select class="form-control" id="Reason-Moored-Input">
                                       <option>WX</option>
                                       <option>SM</option>
                                       <option>UM</option>
                                       <option>BD</option>
                                       <option>Aloft</option>
                                     </select>
-                                  </div>
-                               </div>
-                               <div class="form-row">
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Launches" id="Launches-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Recoveries" id="Recoveries-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Tether Tension" id="Tether-Tension-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Ground Winds" id="Ground-Winds-Input">
-                                 </div>
-                               </div>
-                               <div class="form-row">
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Winds Aloft" id="Winds-Aloft-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Ground Temp" id="Ground-Temp-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Barometric Pressure" id="Barometric-Pressure-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Pitch" id="Pitch-Input">
-                                 </div>
-                               </div>
-                               <div class="form-row">
-                                 <div class="form-group col-md-3">
-                                   <input type="text" class="form-control" placeholder="Helium Pressure" id="Helium-Pressure-Input">
-                                 </div>
-                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" placeholder="Ballonet Pressure" id="Ballonet-Pressure-Input">
-                                 </div>
-                                 <div class="form-group col-md-6">
-                                   <textarea class="form-control" id="Notes" placeholder="Notes" rows="3"></textarea>
-                                 </div>
-                               </div>
-                                <div class="form-group col-md-6">
-                                 <button type="button" class="btn btn-primary" style= "margin-left: 10px;" onclick="saveFlightData(),SwapDivsWithClick('flightFormId','flightTableID')">Save</button>
-                                 <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Close</button>
-                               </div>
-                           </form>
-                           <br>
-                         </form><!--flight Data entry end -->
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Launches" id="Launches-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Recoveries" id="Recoveries-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Tether Tension" id="Tether-Tension-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Ground Winds" id="Ground-Winds-Input">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Winds Aloft" id="Winds-Aloft-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Ground Temp" id="Ground-Temp-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Barometric Pressure" id="Barometric-Pressure-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Pitch" id="Pitch-Input">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Helium Pressure" id="Helium-Pressure-Input">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input type="text" class="form-control" placeholder="Ballonet Pressure" id="Ballonet-Pressure-Input">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <textarea class="form-control" id="Notes" placeholder="Notes" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="saveFlightData(),SwapDivsWithClick('flightFormId','flightTableID')">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Close</button>
+                  </div>
+                </form>
+                <br>
+                </form>
+                <!--flight Data entry end -->
 
-                       <div id="flightTableID" class="col-sm-12 col-lg-12" style="display:block; overflow: auto;" >
-                         <table class="display" id="flight-status-table">
-                            <thead>
-                                <tr>
-                                  <th>Date MM/DD/YY</th>
-                                  <th>Logged By</th>
-                                  <th>Time Logged</th>
-                                  <th>System</th>
-                                  <th>System Status</th>
-                                  <th>Flight Altitude</th>
-                                  <th>Reason Moored</th>
-                                  <th>Launches</th>
-                                  <th>Recoveries </th>
-                                  <th>Tether Tension</th>
-                                  <th>Ground Winds</th>
-                                  <th>Winds Aloft</th>
-                                  <th>Ground Temperature</th>
-                                  <th>Barometric Pressure</th>
-                                  <th>Pitch</th>
-                                  <th>Helium Pressure</th>
-                                  <th>Ballonet Pressure</th>
-                                  <th>Notes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                         </table>
-                          <br>
-                          <button type="button" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
+                <div id="flightTableID" class="col-sm-12 col-lg-12" style="display:block; overflow: auto;">
+                  <table class="display" id="flight-status-table">
+                    <thead>
+                      <tr>
+                        <th>Date MM/DD/YY</th>
+                        <th>Logged By</th>
+                        <th>Time Logged</th>
+                        <th>System</th>
+                        <th>System Status</th>
+                        <th>Flight Altitude</th>
+                        <th>Reason Moored</th>
+                        <th>Launches</th>
+                        <th>Recoveries </th>
+                        <th>Tether Tension</th>
+                        <th>Ground Winds</th>
+                        <th>Winds Aloft</th>
+                        <th>Ground Temperature</th>
+                        <th>Barometric Pressure</th>
+                        <th>Pitch</th>
+                        <th>Helium Pressure</th>
+                        <th>Ballonet Pressure</th>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                  <br>
+                  <button type="button" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
                        </div><!--flightTableID-->
 
                      </div><!--fligtTab-end-->
@@ -277,53 +289,62 @@
                              </div>
                              <div >
                                <button type="button" class="btn btn-primary" style= "margin-left: 10px;" onclick="saveHeliumData(),SwapDivsWithClick('formId','heliumTableID')">Save</button>
-                               <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Close</button>
-                             </div>
-                         </form>
-                         <br>
+                  <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Close</button>
+                </div>
+                </form>
+                <br>
 
-                         <div id="heliumTableID" class="col-sm-12 col-lg-12" style="display:block;" >
-                             <table class="display" id='helium-status-table'>
-                               <thead>
-                                 <tr>
-                                   <th>Time Entered</th>
-                                   <th>Helium Container 1</th>
-                                   <th>Helium Container 2</th>
-                                   <th>Helium Container 3</th>
-                                   <th>Helium Container 4</th>
-                                   <th>Helium Expended</th>
-                                 </tr>
-                               </thead>
-                               <tbody>
-                               </tbody>
-                             </table>
-                             <br>
-                             <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Add</button>
-                        </div><!--heliumTab-end-->
-
-
-                      </div> <!--heliumTableID-end-->
-
-                  </div><!--tab-content-end-->
-
-               </div><!--dash-unit-entry-end-->
-
-          </div><!--col-sm-11 col-lg-11-end-->
+                <div id="heliumTableID" class="col-sm-12 col-lg-12" style="display:block;">
+                  <table class="display" id='helium-status-table'>
+                    <thead>
+                      <tr>
+                        <th>Time Entered</th>
+                        <th>Helium Container 1</th>
+                        <th>Helium Container 2</th>
+                        <th>Helium Container 3</th>
+                        <th>Helium Container 4</th>
+                        <th>Helium Expended</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                  <br>
+                  <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('formId','heliumTableID')">Add</button>
+                </div>
+                <!--heliumTab-end-->
 
 
-       </div><!--end of row2-->
+              </div>
+              <!--heliumTableID-end-->
+
+            </div>
+            <!--tab-content-end-->
+
+          </div>
+          <!--dash-unit-entry-end-->
+
+        </div>
+        <!--col-sm-11 col-lg-11-end-->
 
 
-     </container><!--2nd container end-->
+      </div>
+      <!--end of row2-->
 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-     <script src="assets/javascript/weathermod.js"></script>
-     <!-- <script src="assets/firebase/heliumDB.js"></script> -->
 
-     <!-- <script type="text/javascript">
+      </container>
+      <!--2nd container end-->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+      <script src="assets/javascript/weathermod.js"></script>
+      <script src="assets/javascript/operation.js"></script>
+
+      <!-- <script src="assets/firebase/heliumDB.js"></script> -->
+
+      <!-- <script type="text/javascript">
      $(document).ready(function() {
        var appID = "eb7acd14dcfc608e19796902cddb4326";
 
@@ -369,6 +390,6 @@
      });
    </script> -->
 
-  </body>
+</body>
 
 </head>

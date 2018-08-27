@@ -3,6 +3,7 @@ $(document).ready(function() {
   var appID = "eb7acd14dcfc608e19796902cddb4326";
 
   $(".query_btn").click(function() {
+    $("#forecastWin").html("");
 
     var query_param = $(this).prev().val();
 
@@ -82,6 +83,7 @@ $(document).ready(function() {
             //backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(70,90,172)',
             data: WindArr,
+            pointRadius: 4,
           }]
         },
 

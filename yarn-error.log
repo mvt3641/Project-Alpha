@@ -22,7 +22,7 @@ npm manifest:
     "scripts": {
       "prestart": "start mongod && sleep 3",
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "npm run open && nodemon server.js"
+      "start": "nodemon server.js"
     },
     "repository": {
       "type": "git",
@@ -53,9 +53,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 3221225786
   Command: C:\Windows\system32\cmd.exe
-  Arguments: /d /s /c npm run open && nodemon server.js
+  Arguments: /d /s /c nodemon server.js
   Directory: C:\Users\TaSM Image\Desktop\Project-Alpha
   Output:
   
