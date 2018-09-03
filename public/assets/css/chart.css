@@ -23,6 +23,12 @@ border: 2px solid black;
     transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+.notes{
+  border: 2px solid black;
+  height: 434px;
+  width: 1069px;
+}
+
 /* .inner {display:table-cell;}
 .outer {display:table;}
 .middle {display:table-row;} */

@@ -52,7 +52,20 @@ router.post('/flightdata', function(req, res) {
     })
    });
 
+//////////////////////////////////////////////////////////////////////////////////////
+///////////////////Test route for notes//////////////////////////////////////////////
+router.post('/flightdatanotes', function(req, res){
+  var url = "mongodb://localhost:27017/flightdatatest";
+  mongoose.connect(url, (err, db) =>{
+    flightrec.find()
+    .exec(function(err, results) {
+      if (err) throw err;
+      res.json(results)
+      console.log(`${results.length}  files returned on query for notes`)
+    })
+  })
 
+})
 
 //Api test route//
 //Route for getting ground winds

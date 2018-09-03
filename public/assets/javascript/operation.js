@@ -10,15 +10,36 @@ $(document).ready(function() {
     // dataType: 'json'
   })
   .then(function(res) {
+
     console.log(res);
      // Build working graphs
     dtgraph(res);
     pieChartgraph(res);
     graphChart(res)
     // Ao(res)
+  });
+  //////Test for notes/////////////////
+  $.ajax({
+      method: 'POST',
+      url: '/flightdatanotes',
+      data: {},
+  }).then(function(res){
+    notestables(res);
+ // for( var i=0;i<res.length;i++){
+ //  var p= $('<p>').text(res[i].notes);
+ //      $("#notes_table").append(p);
+      console.log(res);
+ //    }
   })
+///////////////////////////////////////
 });
 
+function notestables(res){
+  for( var i=0;i<res.length;i++){
+   var p= $('<p>').text(res[i].notes);
+       $("#notes_table").append(p)
+     }
+}
 
 
 function SwapDivsWithClick(div1,div2) {
