@@ -1,4 +1,24 @@
 //   // Initialize Firebase
+$(document).ready(function(){
+  $(".mooredButton, .aloftButton").hide();
+  // $(".aloftButton").hide();
+
+  //////////////////////Call to display flight status//////
+  // $.ajax({
+  //   method: 'POST',
+  //   url: '/flightstatushub',
+  //   data: {
+  //   },
+  // })
+  // .then(function(res){
+  // if()
+  //   console.log(res)
+  //
+  // })
+//////////////////////////////////////////////////////
+});
+
+
 
 
 
