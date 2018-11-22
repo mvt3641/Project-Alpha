@@ -18,7 +18,7 @@ $(document).ready(function() {
     graphChart(res)
     // Ao(res)
   });
-  //////Test for notes/////////////////
+  //////Call notes/////////////////
   $.ajax({
       method: 'POST',
       url: '/flightdatanotes',
@@ -136,9 +136,9 @@ function graphChart(res) {
   for (var i = 0; i < 48; i++) {
     //console.log(res[i].GROUND_);
     //console.log(res[i].TIME);
-    var winds = res[i].winds_Aloft;
+    var winds = res[i].windsAloft;
     var date = res[i].date;
-    var grd = res[i].ground_Winds;
+    var grd = res[i].groundWinds;
     var time = res[i].time + " " + date;
     var tension = res[i].tension;
     // var grdArr =[];
