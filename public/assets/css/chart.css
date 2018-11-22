@@ -24,8 +24,9 @@ border: 2px solid black;
 }
 
 .notes{
+  overflow: auto;
   border: 2px solid black;
-  height: 434px;
+  height: 283px;
   width: 1069px;
 }
 
