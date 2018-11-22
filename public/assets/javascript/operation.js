@@ -16,6 +16,7 @@ $(document).ready(function() {
     dtgraph(res);
     pieChartgraph(res);
     graphChart(res)
+    flightlog(res);
     // Ao(res)
   });
   //////Call notes/////////////////
@@ -40,6 +41,16 @@ function notestables(res){
    // var hr= $('hr');
        $("#notes_table").append(p);
      }
+}
+
+function flightlog(res){
+  for (var i=0;i<res.length;i++){
+    var row = $("<tr>");
+    var data = $('<td>').text(Object.values(res[i]));
+    row.append(data);
+    $("#flight-status-table").append(row);
+  }
+  console.log("DATA"+data);
 }
 
 
@@ -97,8 +108,8 @@ function saveFlightData() {
    Launches:Launches,
    recoveries:recoveries,
    tetherTension:tetherTension,
-   groundWinds:groundWinds,
-   windsAloft:windsAloft,
+   ground_Winds:groundWinds,
+   winds_Aloft:windsAloft,
    groundTemp:groundTemp,
    barometricPressure:barometricPressure,
    pitch:pitch,
