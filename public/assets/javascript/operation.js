@@ -111,7 +111,7 @@ function saveFlightData() {
    recoveries:recoveries,
    tetherTension:tetherTension,
    ground_Winds:groundWinds,
-   winds_Aloft:windsAloft,
+   windsAloft:windsAloft,
    groundTemp:groundTemp,
    barometricPressure:barometricPressure,
    pitch:pitch,
