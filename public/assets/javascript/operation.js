@@ -46,11 +46,13 @@ function notestables(res){
 function flightlog(res){
   for (var i=0;i<res.length;i++){
     var row = $("<tr>");
-    var data = $('<td>').text(Object.values(res[i]));
+    // var data = $('<td>').text(Object.values(res[i]));
+    var data = Object.values(res[i]);
+    data.split(",");
     row.append(data);
-    $("#flight-status-table").append(row);
+    $("#flightlogtb").append(row);
+    console.log("DATA "+ data);
   }
-  console.log("DATA"+data);
 }
 
 

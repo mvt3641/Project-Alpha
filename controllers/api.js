@@ -38,7 +38,7 @@ router.post('/api/flightrecord', function(req, res) {
 
 //////////////////////get all data from the db to the charts
 router.post('/flightdata', function(req, res) {
-  var url = "mongodb://localhost:27017/flightdata";
+  var url = "mongodb://localhost:27017/flightdatatest";
   mongoose.connect(url, (err, db) => {
     //Since this in an uploaded file, sort by _id of upload
     flight.find().sort({
