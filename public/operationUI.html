@@ -103,7 +103,7 @@
                 <a href="#metricsTab" data-toggle="tab">System Flight Metrics</a>
               </li>
               <li>
-                <a href="#flightTab" data-toggle="tab">Flight Data Log</a>
+                <a href="#flightTab" id="flightTab" data-toggle="tab">Flight Data Log</a>
               </li>
               <li>
                 <a href="#heliumTab" data-toggle="tab">Helium Status Log</a>
@@ -216,7 +216,7 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="saveFlightData(),SwapDivsWithClick('flightFormId','flightTableID')">Save</button>
+                    <button type="button" id="saved" class="btn btn-primary" style="margin-left: 10px;" onclick="saveFlightData(),SwapDivsWithClick('flightFormId','flightTableID')">Save</button>
                     <button type="button" class="btn btn-primary" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Close</button>
                   </div>
                 </form>
@@ -249,11 +249,11 @@
                       </tr>
                     </thead>
                     <tbody id= "flightlogtb">
-                      
+
                     </tbody>
                   </table>
                   <br>
-                  <button type="button" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
+                  <button type="button" id="addlog" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
                        </div><!--flightTableID-->
 
                      </div><!--fligtTab-end-->

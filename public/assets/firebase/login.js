@@ -20,7 +20,7 @@ firebase.initializeApp(config);
       console.log(email, password);
       firebase.auth().signInWithEmailAndPassword(email, password)
           .then(user => {
-              alert('you succeeded')
+              // alert('you succeeded')
               //Handling the successful authentication.
               window.location = "operationUI.html";
           }).catch(function (error) {
