@@ -32,7 +32,6 @@ var rdmnotes = Math.floor(Math.random()*notesArray.length);
 //randomnames(names);
 
 
-
 nightmare
   .goto("http://localhost:3600")
   .type("#exampleInputEmail3","test@gmail.com")
@@ -62,8 +61,61 @@ nightmare
    .click('#saved')
    .click("#metricsTab")
    .click("#operationsPage")
+   .type(".weather-input", "Kabul")
+   .click("#weatherSearch")
+   .wait(5000)
+   ///New Cycle
+   .click("#FlightTab")
+   .wait(1000)
+   .click("#addlog")
+   .type("#dateLogged","2018-12-"+random(20))
+   .type("#userLogged", randomarr(names))
+   .type("#TimeLogged",getRnd(1,12))
+   .type("#aerostatSN", "Site 1")
+   .evaluate(function(selector, value) {
+    jQuery(selector).val(value);
+ }, '#System-Status', flightStatus[rdmstatus])
+    .type("#Flight-Altitude-Input", getRnd(1500,2000))
+    .evaluate(function(selector, value) {
+     jQuery(selector).val(value);
+  }, '#Reason-Moored-Input', reasonMoored[rdmmooring])
+    .type("#Launches-Input", getRnd(1,2))
+    .type("#Recoveries-Input", getRnd(1,2))
+    .type("#Tether-Tension-Input", getRnd(750,1100))
+    .type("#Ground-Winds-Input", getRnd(8,20))
+    .type("#Winds-Aloft-Input", getRnd(8,20))
+    .type('#Notes', notesArray[rdmnotes])
+    .click('#saved')
+    .click("#metricsTab")
+    .click("#operationsPage")
+    // New Cycle
+    .click("#FlightTab")
+    .wait(1000)
+    .click("#addlog")
+    .type("#dateLogged","2018-12-"+random(20))
+    .type("#userLogged", randomarr(names))
+    .type("#TimeLogged",getRnd(1,12))
+    .type("#aerostatSN", "Site 1")
+    .evaluate(function(selector, value) {
+     jQuery(selector).val(value);
+  }, '#System-Status', flightStatus[rdmstatus])
+     .type("#Flight-Altitude-Input", getRnd(1500,2000))
+     .evaluate(function(selector, value) {
+      jQuery(selector).val(value);
+   }, '#Reason-Moored-Input', reasonMoored[rdmmooring])
+     .type("#Launches-Input", getRnd(1,2))
+     .type("#Recoveries-Input", getRnd(1,2))
+     .type("#Tether-Tension-Input", getRnd(750,1100))
+     .type("#Ground-Winds-Input", getRnd(8,20))
+     .type("#Winds-Aloft-Input", getRnd(8,20))
+     .type('#Notes', notesArray[rdmnotes])
+     .click('#saved')
+     .click("#metricsTab")
+     .click("#operationsPage")
+
   .then(function(res) {
     console.log("Confirmed");
+
   })
   .catch(function(error) {
     console.error("Search failed:", error);

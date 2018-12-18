@@ -37,7 +37,9 @@ $(document).ready(function() {
 
 function notestables(res){
   for (var i=0;i<res.length;i++){
-   var p= $('<p> <hr>').text(res[i].notes);
+   var p= $('<p>').text(res[i].notes);
+   var line= $('<hr>');
+   p.append(line);
    // var hr= $('hr');
        $("#notes_table").append(p);
      }
