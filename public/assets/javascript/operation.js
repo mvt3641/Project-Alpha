@@ -15,8 +15,9 @@ $(document).ready(function() {
      // Build working graphs
     dtgraph(res);
     pieChartgraph(res);
-    graphChart(res)
     flightlog(res);
+    graphChart(res);
+    // flightlog(res);
     // Ao(res)
   });
   //////Call notes/////////////////
@@ -43,19 +44,21 @@ function notestables(res){
    // var hr= $('hr');
        $("#notes_table").append(p);
      }
-}
+};
 
 function flightlog(res){
-  for (var i=0;i<res.length;i++){
-    var row = $("<tr>");
-    // var data = $('<td>').text(Object.values(res[i]));
-    var data = Object.values(res[i]);
-    data.split(",");
-    row.append(data);
-    $("#flightlogtb").append(row);
-    console.log("DATA "+ data);
-  }
-}
+//   for (var i=0;i<res.length;i++){
+//     var row = $("<tr>");
+//     // var data = $('<td>').text(Object.values(res[i]));
+//     var data = Object.values(res[i]);
+//     data.split(",");
+//     row.append(data);
+//     $("#flightlogtb").append(row);
+//     // console.log("DATA "+ data);
+//   }
+//   console.log("DATA "+ data);
+  console.log("log function: "+res);
+};
 
 
 function SwapDivsWithClick(div1,div2) {
@@ -112,7 +115,7 @@ function saveFlightData() {
    Launches:Launches,
    recoveries:recoveries,
    tetherTension:tetherTension,
-   ground_Winds:groundWinds,
+   groundWinds:groundWinds,
    windsAloft:windsAloft,
    groundTemp:groundTemp,
    barometricPressure:barometricPressure,
@@ -133,6 +136,7 @@ $.ajax({
 })
 .then(function(res) {
   console.log(res);
+  flightlog("test"+res);
 })
 };
 

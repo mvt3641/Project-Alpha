@@ -32,6 +32,7 @@ var rdmnotes = Math.floor(Math.random()*notesArray.length);
 //randomnames(names);
 
 
+
 nightmare
   .goto("http://localhost:3600")
   .type("#exampleInputEmail3","test@gmail.com")
