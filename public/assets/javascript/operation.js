@@ -47,16 +47,21 @@ function notestables(res){
 };
 
 function flightlog(res){
-//   for (var i=0;i<res.length;i++){
-//     var row = $("<tr>");
-//     // var data = $('<td>').text(Object.values(res[i]));
-//     var data = Object.values(res[i]);
-//     data.split(",");
-//     row.append(data);
-//     $("#flightlogtb").append(row);
-//     // console.log("DATA "+ data);
-//   }
-//   console.log("DATA "+ data);
+  for (var i=0;i<res.length;i++){
+    var row = $("<tr>");
+    var rowdata = $("<td>");
+    // var data = $('<td>').text(Object.values(res[i]));
+    var data = Object.values(res[i]);
+    for (var j=0;j<data.length;j++){
+    var idata = data[j];
+    // data.split(",") = data;
+    rowdata.append(idata);
+    row.append(rowdata);
+    $("#flightlogtb").append(row);
+    console.log("DATA "+ idata);
+}
+}
+  // console.log("DATA "+ data);
   console.log("log function: "+res);
 };
 
