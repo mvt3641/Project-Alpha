@@ -1,3 +1,4 @@
+
 //////////load charts////////////////////////////////////
 $(document).ready(function() {
   $.ajax({
@@ -46,24 +47,47 @@ function notestables(res){
      }
 };
 
+// function flightlog(res){
+//   for (var i=0;i<res.length;i++){
+//     var row = $("<tr>");
+//     var rowdata = $("<td>");
+//     // var data = $('<td>').text(Object.values(res[i]));
+//     // var data = Object.values(res[i]);
+//     var data = Object.keys(res[i]);
+//     var tablerow = row.append(data);
+//     for (var j=0;j<data.length;j++){
+//     var idata = data[j];
+//     // data.split(",") = data;
+//     rowdata.append(idata);
+//     tablerow.append(rowdata);
+//     $("#flightlogtb").append(tablerow);
+//     // console.log("DATA "+ idata);
+// };
+//   console.log(data);
+//   // console.log("log function: "+res);
+//   };
+// };
+/////////////////////test table function////////////////////////
 function flightlog(res){
-  for (var i=0;i<res.length;i++){
-    var row = $("<tr>");
-    var rowdata = $("<td>");
-    // var data = $('<td>').text(Object.values(res[i]));
-    var data = Object.values(res[i]);
-    for (var j=0;j<data.length;j++){
-    var idata = data[j];
-    // data.split(",") = data;
-    rowdata.append(idata);
-    row.append(rowdata);
-    $("#flightlogtb").append(row);
-    console.log("DATA "+ idata);
+///Database Records
+ var dataTable = Object.values(res[1]);
+  var data = Object.keys(res[1]);
+
+console.log("header for table "+data);
+ console.log("data for column in array of objects "+dataTable);
+
+var table = new Tabulator("#flightlogtb", {
+ 	height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+ 	data: res, //assign data to table
+ 	layout:"fitColumns", //fit columns to width of table (optional)
+ 	columns: data,
+ 	rowClick:function(e, row){ //trigger an alert message when the row is clicked
+ 		alert("Row " + row.getData().id + " Clicked!!!!");
+ 	},
+});
+
 }
-}
-  // console.log("DATA "+ data);
-  console.log("log function: "+res);
-};
+
 
 
 function SwapDivsWithClick(div1,div2) {

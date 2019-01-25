@@ -9,6 +9,8 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var apiRoutes = require('./controllers/api');
 var logger = require("morgan");
+var Tabulator = require('tabulator-tables');
+
 
 // Sets up the Express App
 // =============================================================

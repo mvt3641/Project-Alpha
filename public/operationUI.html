@@ -14,6 +14,8 @@
   <link href="assets/css/table.css" rel="stylesheet">
   <link href="assets/css/weathermod.css" rel="stylesheet">
   <link href="assets/css/chart.css" rel="stylesheet">
+  <!-- <link href="dist/css/tabulator.min.css" rel="stylesheet"> -->
+  <link href="https://unpkg.com/tabulator-tables@4.1.4/dist/css/tabulator.min.css" rel="stylesheet">
 
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -248,9 +250,9 @@
                         <th>Notes</th>
                       </tr>
                     </thead>
-                    <tbody id= "flightlogtb">
+                    <div id= "flightlogtb">
 
-                    </tbody>
+                    </div>
                   </table>
                   <br>
                   <button type="button" id="addlog" class="btn btn-primary" style="margin-top:-18px" onclick="SwapDivsWithClick('flightFormId','flightTableID')">Add</button-->
@@ -347,6 +349,8 @@
       <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
       <script src="assets/javascript/weathermod.js"></script>
       <script src="assets/javascript/operation.js"></script>
+      <!-- <script type="text/javascript" src="dist/js/tabulator.min.js"></script> -->
+      <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script>
 
       <!-- <script src="assets/firebase/heliumDB.js"></script> -->
 
