@@ -68,13 +68,23 @@ router.post('/flightdatanotes', function(req, res){
 })
 
 //Api test route//
-//Route for getting ground winds
-router.get('/api/flightdata/chart', function(req, res) {
-  // db.query('SELECT GROUND_,TIME,Date,Winds_Aloft,TENSION FROM asitrep;',function(err,results){
-  //   if(err) throw err;
-  //   res.json(results);
-  // })
-});
+//Hub API route for flight status
+  router.post('/flightstatushub', function(req, res) {
+    var url = "mongodb://localhost:27017/flightdatatest";
+    mongoose.connect(url, (err, db) => {
+      //Since this in an uploaded file, sort by _id of upload
+      flightrec.find().sort({
+        "_id": 1
+      })
+      .exec(function(err, results) {
+        if (err) throw err;
+        res.json(results)
+        console.log(`${results.length}  files returned on query`)
+      })
+      })
+     });
+
+
 
 
 // Route for getting date and time from table

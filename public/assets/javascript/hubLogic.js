@@ -4,17 +4,40 @@ $(document).ready(function(){
   // $(".aloftButton").hide();
 
   //////////////////////Call to display flight status//////
-  // $.ajax({
-  //   method: 'POST',
-  //   url: '/flightstatushub',
-  //   data: {
-  //   },
-  // })
-  // .then(function(res){
-  // if()
-  //   console.log(res)
-  //
-  // })
+  $.ajax({
+    method: 'POST',
+    url: '/flightstatushub',
+    data: {
+    },
+  })
+  .then(function(res){
+  var val = res[res.length - 1].flightAltitude;
+  var systemS= res[res.length - 1].systemStatus;
+  var reasonM= res[res.length - 1].reasonMoored;
+
+  if(val ==="Moored"){
+
+  console.log("if/else :moored")
+    $("#atlanta-Site").empty();
+      $(".aloftButton").hide();
+      $(".mooredButton").show();
+      $("#displayStatus").text(systemS);
+      $("#displayReason").text(reasonM);
+
+
+  }
+  else{
+      $("#atlanta-Site").empty();
+      $(".mooredButton").hide();
+       $(".aloftButton").show();
+        $("#displayStatus").text(systemS);
+        $("#displayReason").text(reasonM);
+  }
+    console.log(reasonM);
+    console.log(systemS);
+    console.log(val);
+
+  });
 //////////////////////////////////////////////////////
 });
 
@@ -138,7 +161,7 @@ dataGenerator();
 
 flightData_ref.on("child_added", function(snap){
 
-console.log(loggedBy);
+// console.log(loggedBy);
 
 
 ////////////////////////////////////////////////////////////Current Status Table////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,29 +185,29 @@ $("#full-report-table > tbody").append("<tr><td>" + snap.val().dateLogged + "</t
 
 
 ///////////////////////////////////////////////////////////display on dashboard aloft vs. moored//////////////////////////////////////////////////////////////////
-      if(snap.val().system==="Moored"){
-
-      console.log("if/else :moored")
-        $("#atlanta-Site").empty();
-          $(".aloftButton").hide();
-          $(".mooredButton").show();
-          $("#displayStatus").text(snap.val().systemStatus);
-          $("#displayReason").text(snap.val().reasonMoored);
-
-
-      }
-      else{
-          $("#atlanta-Site").empty();
-          $(".mooredButton").hide();
-           $(".aloftButton").show();
-            $("#displayStatus").text(snap.val().systemStatus);
-            $("#displayReason").text(snap.val().reasonMoored);
-      }
-})
-
-
-
-
+//       if(snap.val().system==="Moored"){
+//
+//       console.log("if/else :moored")
+//         $("#atlanta-Site").empty();
+//           $(".aloftButton").hide();
+//           $(".mooredButton").show();
+//           $("#displayStatus").text(snap.val().systemStatus);
+//           $("#displayReason").text(snap.val().reasonMoored);
+//
+//
+//       }
+//       else{
+//           $("#atlanta-Site").empty();
+//           $(".mooredButton").hide();
+//            $(".aloftButton").show();
+//             $("#displayStatus").text(snap.val().systemStatus);
+//             $("#displayReason").text(snap.val().reasonMoored);
+//       }
+// })
+//
+//
+//
+//
 
 
 
@@ -496,7 +519,7 @@ firebase.database().ref('Site/FlightData/').orderByChild("dateLogged")//dateLogg
   var recObj = records.val();
   $("#search-report-table > tbody").empty();
   for(var child in recObj){
-    console.log("groundWinds " + parseInt(recObj[child].groundWinds));
+    // console.log("groundWinds " + parseInt(recObj[child].groundWinds));
     groundWinds.push(Number(recObj[child].groundWinds));
    windsAloft.push(Number(recObj[child].windsAloft));
    flightAltitude.push(Number(recObj[child].flightAltitude));
@@ -543,3 +566,4 @@ options: {
   }
 }
 });
+})
