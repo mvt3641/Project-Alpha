@@ -109,7 +109,7 @@ nightmare
      .type("#Tether-Tension-Input", getRnd(750,1100))
      .type("#Ground-Winds-Input", getRnd(8,20))
      .type("#Winds-Aloft-Input", getRnd(8,20))
-     .type('#Notes', notesArray[rdmnotes])
+     .type('#Notes', randomarr(notesArray)
      .click('#saved')
      .click("#metricsTab")
      .click("#operationsPage")
