@@ -70,25 +70,51 @@ function notestables(res){
 /////////////////////test table function////////////////////////
 function flightlog(res){
 ///Database Records
- var dataTable = Object.values(res[1]);
+ // var dataTable = Object.values(res[i]);
   var data = Object.keys(res[1]);
-
-console.log("header for table "+data);
- console.log("data for column in array of objects "+dataTable);
+  console.log(res);
+  var tabdata = res;
+// console.log("header for table "+data);
+ // console.log("data for column in array of objects "+dataTable);
 
 var table = new Tabulator("#flightlogtb", {
  	height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
- 	data: res, //assign data to table
+ 	data: tabdata, //assign data to table
  	layout:"fitColumns", //fit columns to width of table (optional)
- 	columns: data,
+ 	columns: [{title: "Date Logged"},
+            {title: "User"},
+            {title: "Time"},
+            {title: "system"},
+            {title: "System Status"},
+            {title: "Flight Altitude"},
+            {title: "Reason Moored"},
+            {title: "Launches"},
+            {title: "Recoveries"},
+            {title: "Tether Tension"},
+            {title: "Ground Winds"},
+            {title: "Winds Aloft"},
+            {title: "Ground Temperature"},
+            {title: "Barometric Pressure"},
+            {title: "Pitch"},
+            {title: "Helium Pressure"},
+            {title: "Ballonet Pressure"},
+            {title: "Notes"},
+],
  	rowClick:function(e, row){ //trigger an alert message when the row is clicked
  		alert("Row " + row.getData().id + " Clicked!!!!");
  	},
 });
+// }
 
 }
 
-
+///////function to add titles to array of headers/////////////
+function titleObj(res){
+var header = Object.keys(res[1]);
+var titlemix = header.map(header =>"title:"+ header);
+return titlemix;
+console.log(titlemix);
+};
 
 function SwapDivsWithClick(div1,div2) {
   console.log(" divvals" + div1 +" " + div2);
