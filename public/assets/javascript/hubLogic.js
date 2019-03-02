@@ -11,11 +11,12 @@ $(document).ready(function(){
     },
   })
   .then(function(res){
-  var val = res[res.length - 1].flightAltitude;
+  var flightAtl = res[res.length - 1].flightAltitude;
   var systemS= res[res.length - 1].systemStatus;
   var reasonM= res[res.length - 1].reasonMoored;
 
-  if(val ==="Moored"){
+
+  if(flightAtl ==="0"){
 
   console.log("if/else :moored")
     $("#atlanta-Site").empty();
@@ -32,10 +33,11 @@ $(document).ready(function(){
        $(".aloftButton").show();
         $("#displayStatus").text(systemS);
         $("#displayReason").text(reasonM);
+        $("#displayAlt").text(flightAtl);
   }
     console.log(reasonM);
     console.log(systemS);
-    console.log(val);
+    console.log(flightAtl);
 
   });
 //////////////////////////////////////////////////////

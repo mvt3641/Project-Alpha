@@ -21,7 +21,7 @@ systemStatus: {
   type: {}
 },
 flightAltitude:{
-  type: Number
+  type: {}
 },
 reasonMoored: {
   type: {}

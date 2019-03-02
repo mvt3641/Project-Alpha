@@ -42,7 +42,7 @@ nightmare
   .click("#FlightTab")
   .wait(6000)
   .click("#addlog")
-  .type("#dateLogged","2018-12-"+random(20))
+  .type("#dateLogged",random(20)+"-Jan-19")
   .type("#userLogged", randomarr(names))
   .type("#TimeLogged",getRnd(1,12))
   .type("#aerostatSN", "Site 1")
@@ -109,12 +109,13 @@ nightmare
      .type("#Tether-Tension-Input", getRnd(750,1100))
      .type("#Ground-Winds-Input", getRnd(8,20))
      .type("#Winds-Aloft-Input", getRnd(8,20))
-     .type('#Notes', randomarr(notesArray)
+     .type('#Notes', randomarr(notesArray))
      .click('#saved')
      .click("#metricsTab")
      .click("#operationsPage")
 
   .then(function(res) {
+    nightmare;
     console.log("Confirmed");
 
   })

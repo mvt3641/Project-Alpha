@@ -189,9 +189,10 @@ $.ajax({
   contentType: 'application/json',
   dataType: 'json'
 })
-.then(function(res) {
+.then(function(res,err) {
+  if (err) throw err;
   console.log(res);
-  flightlog("test"+res);
+  flightlog(res);
 })
 };
 
@@ -211,10 +212,10 @@ function graphChart(res) {
     //console.log(res[i].GROUND_);
     //console.log(res[i].TIME);
     var winds = res[i].windsAloft;
-    var date = res[i].date;
+    var date = res[i].dateLogged;
     var grd = res[i].groundWinds;
-    var time = res[i].time + " " + date;
-    var tension = res[i].tension;
+    var time = res[i].Time + " " + date;
+    var tension = res[i].tetherTension;
     // var grdArr =[];
     // var timeArr =[];
     grdArr.push(grd);
