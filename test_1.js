@@ -32,6 +32,9 @@ var rdmnotes = Math.floor(Math.random()*notesArray.length);
 //randomnames(names);
 
 
+var create_test = function(){
+
+
 
 nightmare
   .goto("http://localhost:3600")
@@ -114,12 +117,20 @@ nightmare
      .click("#metricsTab")
      .click("#operationsPage")
 
+     //end of test cycle
+     .then(function(res) {
+       nightmare;
+       console.log("Confirmed");
+       })
+       .catch(function(error) {
+         console.error("Search failed:", error);
+       });
 
-  .then(function(res) {
-    nightmare;
-    console.log("Confirmed");
-})
+}
 
-  .catch(function(error) {
-    console.error("Search failed:", error);
-  });
+var runtest= function(){
+  create_test();
+  create_test();
+  };
+
+  runtest();

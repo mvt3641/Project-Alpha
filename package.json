@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "prestart": "start mongod && sleep 3",
-    "test": "nodemon test.js",
+    "test": "nodemon test_1.js",
     "start": "nodemon server.js"
 
 
