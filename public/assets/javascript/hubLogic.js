@@ -16,8 +16,7 @@ $(document).ready(function(){
   var reasonM= res[res.length - 1].reasonMoored;
 
 
-  if(flightAtl ==="0"){
-
+  if(flightAtl === "moored"){
   console.log("if/else :moored")
     $("#atlanta-Site").empty();
       $(".aloftButton").hide();

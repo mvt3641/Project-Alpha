@@ -11,7 +11,7 @@ var nightmare = new Nightmare({ show: true,typeInterval: 100
 
  var notesArray = ["Launched Aerostat","Performed maintenance on platform","Inflated to 7MC", "Moored for Weather", "Patched Aerostat", "Launching at 0700"]
 
-
+var flightArray =[1200,1500,1700,1800,"moored"];
 
  function random(max) {
  return Math.floor(Math.random() * Math.floor(max));
@@ -29,10 +29,11 @@ function randomarr(array){
 var rdmstatus = Math.floor(Math.random()*flightStatus.length);
 var rdmmooring = Math.floor(Math.random()*reasonMoored.length);
 var rdmnotes = Math.floor(Math.random()*notesArray.length);
+var flightatlstatus = Math.floor(Math.random()*flightArray.length);
 //randomnames(names);
 
 
-var create_test = function(){
+// var create_test = function(){
 
 
 
@@ -41,7 +42,7 @@ nightmare
   .type("#exampleInputEmail3","test@gmail.com")
   .type("#exampleInputPassword3", "testtest")
   .click("#login")
-  .wait(2000)
+  .wait(5000)
   .click("#flighttest")
   .wait(6000)
   .click("#addlog")
@@ -52,7 +53,7 @@ nightmare
   .evaluate(function(selector, value) {
    jQuery(selector).val(value);
 }, '#System-Status', flightStatus[rdmstatus])
-   .type("#Flight-Altitude-Input", getRnd(1500,2000))
+   .type("#Flight-Altitude-Input", flightArray[flightatlstatus])
    .evaluate(function(selector, value) {
     jQuery(selector).val(value);
  }, '#Reason-Moored-Input', reasonMoored[rdmmooring])
@@ -103,7 +104,7 @@ nightmare
     .evaluate(function(selector, value) {
      jQuery(selector).val(value);
   }, '#System-Status', flightStatus[rdmstatus])
-     .type("#Flight-Altitude-Input", getRnd(1500,2000))
+     .type("#Flight-Altitude-Input", "moored")
      .evaluate(function(selector, value) {
       jQuery(selector).val(value);
    }, '#Reason-Moored-Input', reasonMoored[rdmmooring])
@@ -126,11 +127,12 @@ nightmare
          console.error("Search failed:", error);
        });
 
-}
+// }
 
-var runtest= function(){
-  create_test();
-  create_test();
-  };
+// var runtest= function(){
+//   create_test();
+// }
 
-  runtest();
+
+
+  // runtest();
